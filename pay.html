@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>支付</title>
+  <link rel="stylesheet" href="./css/common.css" />
+  <link rel="stylesheet" href="./css/pay.css" />
+  <script src="./js/common.js"></script>
+  <script>
+    (function () {
+      document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
+    })();
+  </script>
+</head>
+
+<body>
+  <div class="pay_page">
+    <div class="pay_box">
+      <div class="tit">
+        <h3>
+          付款观看现场直播
+        </h3>
+        <img src="http://placeholder.qiniudn.com/60x60/3cc51f/ffffff" alt="logo">
+      </div>
+      <span>
+        <b>￥</b>150.00</span>
+      <button class="common_btn">立即支付</button>
+    </div>
+    <div class="footer">
+      <span id="accountLogin">账号登录</span>
+      <p>（仅限金蓝盟集团内部人员登录）</p>
+    </div>
+  </div>
+
+  <!-- modal -->
+  <div id="modal">
+    <div class="modal_mask">
+      </div>
+      <div class="modal_box login_box">
+        <span class="modal_close" id="closeBtn"></span>
+        <h4>内部登录</h4>
+        <input type="text" placeholder="输入账号">
+        <input type="password" placeholder="输入密码">
+        <button class="common_btn" id="test">立即登录</button>
+      </div>
+  </div>
+</body>
+<script>
+  let closeBtn = document.getElementById('closeBtn');
+  let modal = document.getElementById('modal');
+  let accountLogin = document.getElementById('accountLogin');
+  let test = document.getElementById('test');
+  closeBtn.addEventListener('click', function(){
+    modal.style.display = 'none';
+  });
+  accountLogin.addEventListener('click', function(){
+    modal.style.display = 'block';
+  });
+  test.addEventListener('click', function(){
+    tipModal('登录成功','success','modal')
+  });
+</script>
+</html>
