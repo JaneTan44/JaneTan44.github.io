@@ -130,7 +130,7 @@
 
   function changeHeight() {
     textarea.style.height = 'auto';
-    textarea.style.height = textarea.scrollHeight + 'px';
+    textarea.style.height = textarea.scrollHeight + 'rem';
   }
 
   function sent() {
@@ -154,6 +154,7 @@
     chatRoom.scrollTop = chatRoom.offsetHeight - sentBox.offsetHeight;
     textarea.value = '';
     // sentBox.offsetHeight = ''
+    sentBox.style.minHeight = '.98rem';
   }
 
   function noData() {
