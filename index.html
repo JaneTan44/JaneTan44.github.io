@@ -57,7 +57,7 @@
         </div>
       </div>
     </div>
-    <div class="sent_box">
+    <div class="sent_box" id="sentBox">
       <textarea autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="说两句捧个场吧，限制30个字" rows="1"
         cols="30" maxlength="30" id="msg"></textarea>
       <span id="sentBtn">发送</span>
@@ -136,6 +136,7 @@
   function sent() {
     let chatRoom = document.getElementById('chatRoom');
     let noData = document.getElementById('noData');
+    let sentBox = document.getElementById('sentBox');
     if(!!noData) chatRoom.removeChild(noData);
     let msg = textarea.value;
     let html =
@@ -150,8 +151,9 @@
     newDiv.className = 'user_chat';
     newDiv.innerHTML = html;
     chatRoom.appendChild(newDiv);
-    chatRoom.scrollTop = chatRoom.offsetHeight - sentBtn.offsetHeight;
+    chatRoom.scrollTop = chatRoom.offsetHeight - sentBox.offsetHeight;
     textarea.value = '';
+    // sentBox.offsetHeight = ''
   }
 
   function noData() {

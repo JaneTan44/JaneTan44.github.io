@@ -80,6 +80,10 @@
   -webkit-box-align: center;
   -webkit-align-items: center;
   align-items: center;
+  margin-top: .2rem;
+}
+.chat_room>div:first-child{
+  margin-top: .1rem;
 }
 
 .chat_box:not(:first-child) {
