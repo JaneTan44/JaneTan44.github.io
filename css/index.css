@@ -73,7 +73,7 @@
   line-height: .56rem;
 }
 
-.chat_box {
+.chat_box,.user_chat{
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -92,7 +92,10 @@
   flex: 1;
   margin-left: .24rem;
 }
-
+.user_chat>.chat_msg {
+  margin-right: .24rem;
+  text-align: right;
+}
 .chat_msg>span {
   display: block;
   font-size: .26rem;
