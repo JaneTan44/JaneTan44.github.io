@@ -154,7 +154,7 @@
     chatRoom.scrollTop = chatRoom.offsetHeight - sentBox.offsetHeight;
     textarea.value = '';
     // sentBox.offsetHeight = ''
-    sentBox.style.minHeight = '.98rem';
+    sentBox.style.minHeight = textarea.scrollHeight + 'px';
   }
 
   function noData() {
