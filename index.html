@@ -12,8 +12,8 @@
   <link rel="stylesheet" href="./css/common.css" />
   <link rel="stylesheet" href="./css/index.css" />
   <style>
-    video.center {
-      object-position: 50% 50% !important;
+    video {
+      object-fit: contain !important;
     }
   </style>
   <script>
@@ -33,7 +33,7 @@
       </div>
       <div class="prism-player" id="J_prismPlayer"></div>
       <div class="player_footer">
-        <h3>WE2018春夏新品站展览2</h3>
+        <h3>WE2018春夏新品站展览3</h3>
         <p>直播嘉宾：
           <span>谢继东老师</span>
         </p>
@@ -121,21 +121,16 @@
   }, function (player) {
     console.log("播放器创建了。");
   });
-  this._firstFullscreen = true;
-  let that = this;
+  var that = this;
   this.player.on('requestFullScreen', (e) => {
-    if (that._firstFullscreen) {
-      that.player.cancelFullScreen();
-      that._firstFullscreen = false;
-    } else {
-      let video = $(that.player.el()).find('video');
-      video.addClass('center');
-    }
+    that.adjustLayout(true);
+    that.player.cancelFullScreen();
   });
-  this.player.on('cancelFullScreen', (e) => {
-    let video = $(that.player.el()).find('video');
-    video.removeClass('center');
-  })
+
+  this.player.tag.addEventListener("x5videoexitfullscreen", () => {
+    if (WeixinJSBridge)
+      WeixinJSBridge.call('closeWindow');
+  });
 
   let textarea = document.getElementById('msg'),
     sentBtn = document.getElementById('sentBtn');
