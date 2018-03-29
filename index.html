@@ -128,7 +128,8 @@
     var setLayout = function () {
       //设置播放器容器的高度
       // var height; //根据实际情况设置高度
-      player.el().style.height = '4.24rem';
+      player.el().style.width = window.innerWidth + "px";
+      player.el().style.height = window.innerHeight + "px";
     }
     window.onresize = function () {
       setLayout();
