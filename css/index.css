@@ -125,7 +125,9 @@ body{
   line-height: 1.2;
   font-size: .28rem;
 }
-
+.user_chat>.chat_msg>p{
+  text-align: left;
+}
 .sent_box {
   min-height: .98rem;
   box-sizing: border-box;
