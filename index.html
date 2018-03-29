@@ -119,13 +119,17 @@
       }
     ]
   }, function (player) {
-    let video = document.getElementById('J_prismPlayer').getElementsByTagName('video')[0];
+  });
+  
+  let video = document.getElementById('J_prismPlayer').getElementsByTagName('video')[0];
     window.onresize = function () {
       video.style.width = '.' + window.innerWidth + "rem";
       video.style.height = '.' + window.innerHeight + "rem";
+      console.log(window.innerWidth)
+      console.log(window.innerHeight)
+      console.log(video.style.width)
+      console.log(video.style.height)
     }
-  });
-
 
   let textarea = document.getElementById('msg'),
     sentBtn = document.getElementById('sentBtn');
