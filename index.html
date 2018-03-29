@@ -83,6 +83,8 @@
     source: "http://player.alicdn.com/video/aliyunmedia.mp4",
     cover: "",
     x5_fullscreen: true, //全屏播放
+    x5_orientation: landscape,
+    // x5_video_position: top,
     x5_type: 'h5',
     skinLayout: [{
         "name": "bigPlayButton",
@@ -121,15 +123,15 @@
   }, function (player) {
   });
   
-  let video = document.getElementById('J_prismPlayer').getElementsByTagName('video')[0];
-    window.onresize = function () {
-      video.style.width = '.' + window.innerWidth + "rem";
-      video.style.height = '.' + window.innerHeight + "rem";
-      console.log(window.innerWidth)
-      console.log(window.innerHeight)
-      console.log(video.style.width)
-      console.log(video.style.height)
-    }
+  // let video = document.getElementById('J_prismPlayer').getElementsByTagName('video')[0];
+  //   window.onresize = function () {
+  //     video.style.width = '.' + window.innerWidth + "rem";
+  //     video.style.height = '.' + window.innerHeight + "rem";
+  //     console.log(window.innerWidth)
+  //     console.log(window.innerHeight)
+  //     console.log(video.style.width)
+  //     console.log(video.style.height)
+  //   }
 
   let textarea = document.getElementById('msg'),
     sentBtn = document.getElementById('sentBtn');
