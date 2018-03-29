@@ -78,7 +78,7 @@
     width: "100%",
     height: "4.24rem",
     controlBarVisibility: "always",
-    // useH5Prism: true,
+    useH5Prism: true,
     // useFlashPrism: true,
     source: "http://player.alicdn.com/video/aliyunmedia.mp4",
     cover: "",
@@ -125,17 +125,17 @@
     //         WeixinJSBridge.call('closeWindow');
     // });
 
-    var setLayout = function () {
+    //var setLayout = function () {
       //设置播放器容器的高度
       // var height; //根据实际情况设置高度
-      player.el().style.width = window.innerWidth + "px";
-      player.el().style.height = window.innerHeight + "px";
-    }
-    window.onresize = function () {
-      setLayout();
-    }
-    player.on("requestFullScreen", function () {
-      setLayout();
+      //player.el().style.width = window.innerWidth + "px";
+      //player.el().style.height = window.innerHeight + "px";
+    //}
+    //window.onresize = function () {
+      //setLayout();
+    //}
+   // player.on("requestFullScreen", function () {
+      //setLayout();
     });
   // window.onresize = function () {
   //   video.style.width = window.innerWidth + "px";
