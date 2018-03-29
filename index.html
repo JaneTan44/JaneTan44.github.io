@@ -119,16 +119,10 @@
       }
     ]
   }, function (player) {
-    var that = this;
-    this.player.on('requestFullScreen', (e) => {
-      that.adjustLayout(true);
-      that.player.cancelFullScreen();
-    });
-
-    this.player.tag.addEventListener("x5videoexitfullscreen", () => {
-      if (WeixinJSBridge)
-        WeixinJSBridge.call('closeWindow');
-    });
+    let video = document.getElementById('J_prismPlayer').getElementsByTagName('video')[0];
+    console.log(video)
+    console.log(video.className)
+    
   });
 
 
