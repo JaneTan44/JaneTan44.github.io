@@ -127,8 +127,8 @@
 
     var setLayout = function () {
       //设置播放器容器的高度
-      var height; //根据实际情况设置高度
-      player.el().style.height = height;
+      // var height; //根据实际情况设置高度
+      player.el().style.height = '4.24rem';
     }
     window.onresize = function () {
       setLayout();
@@ -136,17 +136,14 @@
     player.on("requestFullScreen", function () {
       setLayout();
     });
-    console.log(player.el())
-
-let video = document.getElementById('J_prismPlayer').getElementsByTagName('video')[0];
-  window.onresize = function () {
-    video.style.width = window.innerWidth + "px";
-    video.style.height = window.innerHeight + "px";
-    console.log(window.innerWidth)
-    console.log(window.innerHeight)
-    console.log(video.style.width)
-    console.log(video.style.height)
-  }
+  // window.onresize = function () {
+  //   video.style.width = window.innerWidth + "px";
+  //   video.style.height = window.innerHeight + "px";
+  //   console.log(window.innerWidth)
+  //   console.log(window.innerHeight)
+  //   console.log(video.style.width)
+  //   console.log(video.style.height)
+  // }
   });
 
   let textarea = document.getElementById('msg'),
