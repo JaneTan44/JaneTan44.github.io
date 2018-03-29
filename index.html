@@ -120,9 +120,10 @@
     ]
   }, function (player) {
     let video = document.getElementById('J_prismPlayer').getElementsByTagName('video')[0];
-    console.log(video)
-    console.log(video.className)
-    
+    window.onresize = function () {
+      video.style.width = '.' + window.innerWidth + "rem";
+      video.style.height = '.' + window.innerHeight + "rem";
+    }
   });
 
 
