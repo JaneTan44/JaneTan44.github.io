@@ -11,6 +11,11 @@
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
   <link rel="stylesheet" href="./css/common.css" />
   <link rel="stylesheet" href="./css/index.css" />
+  <style>
+    video.center {
+      object-position: 50% 50% !important;
+    }
+  </style>
   <script>
     (function () {
       document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
@@ -28,7 +33,7 @@
       </div>
       <div class="prism-player" id="J_prismPlayer"></div>
       <div class="player_footer">
-        <h3>WE2018春夏新品站展览1</h3>
+        <h3>WE2018春夏新品站展览2</h3>
         <p>直播嘉宾：
           <span>谢继东老师</span>
         </p>
@@ -77,8 +82,8 @@
     useFlashPrism: true,
     source: "http://player.alicdn.com/video/aliyunmedia.mp4",
     cover: "",
-    x5_fullscreen:false, //全屏播放
-    x5_type:'h5',
+    x5_fullscreen: false, //全屏播放
+    x5_type: 'h5',
     skinLayout: [{
         "name": "bigPlayButton",
         "align": "cc"
@@ -116,6 +121,22 @@
   }, function (player) {
     console.log("播放器创建了。");
   });
+  this._firstFullscreen = true;
+  let that = this;
+  this.player.on('requestFullScreen', (e) => {
+    if (that._firstFullscreen) {
+      that.player.cancelFullScreen();
+      that._firstFullscreen = false;
+    } else {
+      let video = $(that.player.el()).find('video');
+      video.addClass('center');
+    }
+  });
+  this.player.on('cancelFullScreen', (e) => {
+    let video = $(that.player.el()).find('video');
+    video.removeClass('center');
+  })
+
   let textarea = document.getElementById('msg'),
     sentBtn = document.getElementById('sentBtn');
   sentBtn.addEventListener('click', sent);
@@ -131,7 +152,7 @@
     let chatRoom = document.getElementById('chatRoom');
     let noData = document.getElementById('noData');
     let sentBox = document.getElementById('sentBox');
-    if(!!noData) chatRoom.removeChild(noData);
+    if (!!noData) chatRoom.removeChild(noData);
     let msg = textarea.value;
     let html =
       `<div class="chat_msg">
@@ -145,7 +166,7 @@
     newDiv.className = 'user_chat';
     newDiv.innerHTML = html;
     chatRoom.appendChild(newDiv);
-    chatRoom.scrollTop = chatRoom.scrollHeight- sentBox.scrollHeight;
+    chatRoom.scrollTop = chatRoom.scrollHeight - sentBox.scrollHeight;
     textarea.value = '';
     textarea.style.height = '.58rem';
     sentBox.style.minHeight = textarea.scrollHeight + 'px';
@@ -154,10 +175,10 @@
   function noData() {
     let chatRoom = document.getElementById('chatRoom');
     let list = chatRoom.getElementsByClassName('chat_box');
-    if(list.length === 0){
+    if (list.length === 0) {
       let newDiv = document.createElement('div');
       let html =
-      `<img src="./images/nodata.png" alt="暂无留言">
+        `<img src="./images/nodata.png" alt="暂无留言">
       <p>暂无发言</p>`;
       newDiv.className = 'no_data';
       newDiv.id = 'noData';
