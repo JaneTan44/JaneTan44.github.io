@@ -33,7 +33,7 @@
       </div>
       <div class="prism-player" id="J_prismPlayer"></div>
       <div class="player_footer">
-        <h3>WE2018春夏新品站展览4</h3>
+        <h3>WE2018春夏新品站展览5</h3>
         <p>直播嘉宾：
           <span>谢继东老师</span>
         </p>
@@ -78,8 +78,8 @@
     width: "100%",
     height: "4.24rem",
     controlBarVisibility: "always",
-    useH5Prism: false,
-    useFlashPrism: true,
+    useH5Prism: true,
+    // useFlashPrism: true,
     source: "http://player.alicdn.com/video/aliyunmedia.mp4",
     cover: "",
     x5_fullscreen: true, //全屏播放
@@ -119,18 +119,18 @@
       }
     ]
   }, function (player) {
-    console.log("播放器创建了。");
-  });
-  var that = this;
-  this.player.on('requestFullScreen', (e) => {
-    that.adjustLayout(true);
-    that.player.cancelFullScreen();
+    var that = this;
+    this.player.on('requestFullScreen', (e) => {
+      that.adjustLayout(true);
+      that.player.cancelFullScreen();
+    });
+
+    this.player.tag.addEventListener("x5videoexitfullscreen", () => {
+      if (WeixinJSBridge)
+        WeixinJSBridge.call('closeWindow');
+    });
   });
 
-  this.player.tag.addEventListener("x5videoexitfullscreen", () => {
-    if (WeixinJSBridge)
-      WeixinJSBridge.call('closeWindow');
-  });
 
   let textarea = document.getElementById('msg'),
     sentBtn = document.getElementById('sentBtn');
