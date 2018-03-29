@@ -120,8 +120,24 @@
       }
     ]
   }, function (player) {
+    // this.player.tag.addEventListener("x5videoexitfullscreen", ()=>{
+    //     if(WeixinJSBridge)
+    //         WeixinJSBridge.call('closeWindow');
+    // });
+
+    var setLayout = function () {
+      //设置播放器容器的高度
+      var height; //根据实际情况设置高度
+      player.el().style.height = height;
+    }
+    window.onresize = function () {
+      setLayout();
+    }
+    player.on("requestFullScreen", function () {
+      setLayout();
+    });
   });
-  
+
   // let video = document.getElementById('J_prismPlayer').getElementsByTagName('video')[0];
   //   window.onresize = function () {
   //     video.style.width = '.' + window.innerWidth + "rem";
