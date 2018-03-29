@@ -121,8 +121,8 @@
   }, function (player) {
     let video = document.getElementById('J_prismPlayer').getElementsByTagName('video')[0];
     window.onresize = function () {
-      video.style.width = '.' + window.innerWidth + "rem";
-      video.style.height = '.' + window.innerHeight + "rem";
+      video.style.width = window.innerWidth + "px";
+      video.style.height = window.innerHeight + "px";
     }
   });
 
