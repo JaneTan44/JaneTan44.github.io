@@ -107,6 +107,7 @@ body{
 .user_chat>.chat_msg {
   margin-right: .24rem;
   text-align: right;
+  margin-left: 0;
 }
 .chat_msg>span {
   display: block;
