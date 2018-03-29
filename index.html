@@ -120,10 +120,10 @@
       }
     ]
   }, function (player) {
-    // this.player.tag.addEventListener("x5videoexitfullscreen", ()=>{
-    //     if(WeixinJSBridge)
-    //         WeixinJSBridge.call('closeWindow');
-    // });
+    this.player.tag.addEventListener("x5videoexitfullscreen", ()=>{
+        if(WeixinJSBridge)
+            WeixinJSBridge.call('closeWindow');
+     });
 
     //var setLayout = function () {
       //设置播放器容器的高度
