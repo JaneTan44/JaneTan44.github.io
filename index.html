@@ -19,10 +19,15 @@
   <script>
     (function () {
       document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
-      window.addEventListener("popstate", function(e) {
-    // 新版中使用wx.closeWindow()方法
-    wx.closeWindow()
-    }, false);
+      var isPageHide = false;
+      window.addEventListener('pageshow', function () {
+        if (isPageHide) {
+          window.location.reload();
+        }
+      });
+      window.addEventListener('pagehide', function () {
+        isPageHide = true;
+      });
     })();
   </script>
 </head>
@@ -141,6 +146,10 @@
     //}
     // player.on("requestFullScreen", function () {
     //setLayout();
+    // window.addEventListener("popstate", function (e) {
+    //   // 新版中使用wx.closeWindow()方法
+    //   wx.closeWindow()
+    // }, false);
   });
   // window.onresize = function () {
   //   video.style.width = window.innerWidth + "px";
