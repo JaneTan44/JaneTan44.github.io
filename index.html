@@ -133,8 +133,13 @@
     let videoDiv = document.getElementById('J_prismPlayer')
     let video = videoDiv.getElementsByTagName('video')[0]
     video.addEventListener("x5videoexitfullscreen", function () {
-      videoDiv.style.height = '4.24rem';
+      videoDiv.style.height = '4.24rem !important';
     });
+    video.addEventListener("x5videoenterfullscreen", function () {
+
+      videoDiv.style.width = '4.24rem !important';
+      videoDiv.style.height = '4.24rem !important';
+    })
 
     //var setLayout = function () {
     //设置播放器容器的高度
