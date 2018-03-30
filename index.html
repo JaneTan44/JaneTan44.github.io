@@ -25,19 +25,56 @@
 
       //   }
       // });
+
+      if (!window.history.pushState || !document.dispatchEvent) return;
+      var href = location.href;
+      var flag = true;
+      var voidFn = function () {};
+      var fn = voidFn;
+      var dispatchFn = function () {
+        var evt = document.createEvent('Event');
+        evt.initEvent('popstate', true, true);
+        window.dispatchEvent(evt);
+      };
+
+      //  window.addEventListener('load', function() {
+      if (location.hash !== '#flag') {
+        history.replaceState({}, '', 'index.html');
+        if (href.search('#') === -1) {
+          history.pushState({}, '', href + '#flag');
+        } else {
+          history.replaceState({}, '', 'index.html');       
+        }
+
+      }
+
+      window.addEventListener('popstate', function () {
+        dispatchFn = voidFn;
+        flag = !flag;
+        if (flag) {
+          location.reload();
+        }
+
+        //   }, false);
+
+        setTimeout(function () {
+          fn = dispatchFn;
+          fn();
+        }, 20);
+      }, false);
     })();
   </script>
 </head>
 
 <body>
-  
-    <div class="player_header">
-        <img src="./images/logo.png" alt="直播logo">
-        <span>当前
-          <b> 8792 </b>人观看直播</span>
-      </div>
-    <div class="prism-player" id="J_prismPlayer"></div>
-  
+
+  <div class="player_header">
+    <img src="./images/logo.png" alt="直播logo">
+    <span>当前
+      <b> 8792 </b>人观看直播</span>
+  </div>
+  <div class="prism-player" id="J_prismPlayer"></div>
+
   <!-- <div class="container">
     <div class="player">
       <div class="player_header">
@@ -151,10 +188,6 @@
     //}
     // player.on("requestFullScreen", function () {
     //setLayout();
-    // window.addEventListener("popstate", function (e) {
-    //   // 新版中使用wx.closeWindow()方法
-    //   wx.closeWindow()
-    // }, false);
   });
   // window.onresize = function () {
   //   video.style.width = window.innerWidth + "px";
