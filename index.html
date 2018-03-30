@@ -91,7 +91,7 @@
     source: "http://player.alicdn.com/video/aliyunmedia.mp4",
     cover: "",
     x5_video_position: 'top',
-    // x5_orientation: 'landscape',
+    x5_orientation: 'landscape',
     x5_type: 'h5',
     x5_fullscreen: true, //全屏播放
     skinLayout: [{
@@ -133,7 +133,7 @@
     let videoDiv = document.getElementById('J_prismPlayer')
     let video = videoDiv.getElementsByTagName('video')[0]
     video.addEventListener("x5videoexitfullscreen", function () {
-      alert("exit fullscreen")
+      videoDiv.style.height = '4.24rem';
     });
 
     //var setLayout = function () {
