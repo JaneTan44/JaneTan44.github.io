@@ -9,7 +9,7 @@ body{
 .container {
   height: 100%;
 }
-.player{
+.prism-player{
   height: 4.24rem;
   overflow: hidden;
 }
