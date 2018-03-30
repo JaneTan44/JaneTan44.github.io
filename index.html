@@ -17,20 +17,22 @@
     }
   </style>
   <script>
-    (function () {
-      document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
-      document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState == 'hidden') {
-          wx.closeWindow()
+    // (function () {
+    //   document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
+    //   document.addEventListener('visibilitychange', () => {
+    //     if (document.visibilityState == 'hidden') {
+    //       wx.closeWindow()
       
-        }
-      });
-    })();
+    //     }
+    //   });
+    // })();
   </script>
 </head>
 
 <body>
-  <div class="container">
+    <div class="prism-player" id="J_prismPlayer"></div>
+  
+  <!-- <div class="container">
     <div class="player">
       <div class="player_header">
         <img src="./images/logo.png" alt="直播logo">
@@ -73,7 +75,7 @@
         cols="30" maxlength="30" id="msg"></textarea>
       <span id="sentBtn">发送</span>
     </div>
-  </div>
+  </div> -->
 </body>
 <script>
   var player = new Aliplayer({
