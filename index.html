@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播1</title>
+  <title>直播</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
   <link rel="stylesheet" href="./css/common.css" />
@@ -25,43 +25,20 @@
 
       //   }
       // });
+      pushHistory();
 
-      if (!window.history.pushState || !document.dispatchEvent) return;
-      var href = location.href;
-      var flag = true;
-      var voidFn = function () {};
-      var fn = voidFn;
-      var dispatchFn = function () {
-        var evt = document.createEvent('Event');
-        evt.initEvent('popstate', true, true);
-        window.dispatchEvent(evt);
+      window.addEventListener("popstate", function (e) { //回调函数中实现需要的功能
+          alert("我监听到了浏览器的返回按钮事件啦");
+          location.href = '你要跳转的链接'; //在这里指定其返回的地址
+        }, false);
+
+    function pushHistory() {
+      var state = {
+        title: "title",
+        url: "index.html"
       };
-
-      //  window.addEventListener('load', function() {
-      if (location.hash !== '#flag') {
-        history.replaceState({}, '', 'index.html');
-        if (href.search('#') === -1) {
-          history.pushState({}, '', href + '#flag');
-        } else {
-          history.replaceState({}, '', 'index.html');       
-        }
-
-      }
-
-      window.addEventListener('popstate', function () {
-        dispatchFn = voidFn;
-        flag = !flag;
-        if (flag) {
-          location.reload();
-        }
-
-        //   }, false);
-
-        setTimeout(function () {
-          fn = dispatchFn;
-          fn();
-        }, 20);
-      }, false);
+      window.history.pushState(state, state.title, state.url);
+    }
     })();
   </script>
 </head>
@@ -75,7 +52,7 @@
   </div>
   <div class="prism-player" id="J_prismPlayer"></div>
 
-  <!-- <div class="container">
+  <div class="container">
     <div class="player">
       <div class="player_header">
         <img src="./images/logo.png" alt="直播logo">
@@ -118,7 +95,7 @@
         cols="30" maxlength="30" id="msg"></textarea>
       <span id="sentBtn">发送</span>
     </div>
-  </div> -->
+  </div>
 </body>
 <script>
   var player = new Aliplayer({
@@ -199,56 +176,56 @@
   // }
   //});
 
-  // let textarea = document.getElementById('msg'),
-  //   sentBtn = document.getElementById('sentBtn');
-  // sentBtn.addEventListener('click', sent);
-  // textarea.addEventListener('keyup', changeHeight);
-  // textarea.addEventListener('keydown', changeHeight);
+  let textarea = document.getElementById('msg'),
+    sentBtn = document.getElementById('sentBtn');
+  sentBtn.addEventListener('click', sent);
+  textarea.addEventListener('keyup', changeHeight);
+  textarea.addEventListener('keydown', changeHeight);
 
-  // function changeHeight() {
-  //   textarea.style.height = 'auto';
-  //   textarea.style.height = textarea.scrollHeight + 'px';
-  // }
+  function changeHeight() {
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
+  }
 
-  // function sent() {
-  //   let chatRoom = document.getElementById('chatRoom');
-  //   let noData = document.getElementById('noData');
-  //   let sentBox = document.getElementById('sentBox');
-  //   if (!!noData) chatRoom.removeChild(noData);
-  //   let msg = textarea.value;
-  //   let html =
-  //     `<div class="chat_msg">
-  //       <span>小蜡姬 16:42</span>
-  //       <p>${msg}</p>
-  //     </div>
-  //     <div class="chat_img">
-  //       <img src="http://placeholder.qiniudn.com/60x60/3cc51f/ffffff" alt="">
-  //     </div>`;
-  //   let newDiv = document.createElement('div');
-  //   newDiv.className = 'user_chat';
-  //   newDiv.innerHTML = html;
-  //   chatRoom.appendChild(newDiv);
-  //   chatRoom.scrollTop = chatRoom.scrollHeight - sentBox.scrollHeight;
-  //   textarea.value = '';
-  //   textarea.style.height = '.58rem';
-  //   sentBox.style.minHeight = textarea.scrollHeight + 'px';
-  // }
+  function sent() {
+    let chatRoom = document.getElementById('chatRoom');
+    let noData = document.getElementById('noData');
+    let sentBox = document.getElementById('sentBox');
+    if (!!noData) chatRoom.removeChild(noData);
+    let msg = textarea.value;
+    let html =
+      `<div class="chat_msg">
+        <span>小蜡姬 16:42</span>
+        <p>${msg}</p>
+      </div>
+      <div class="chat_img">
+        <img src="http://placeholder.qiniudn.com/60x60/3cc51f/ffffff" alt="">
+      </div>`;
+    let newDiv = document.createElement('div');
+    newDiv.className = 'user_chat';
+    newDiv.innerHTML = html;
+    chatRoom.appendChild(newDiv);
+    chatRoom.scrollTop = chatRoom.scrollHeight - sentBox.scrollHeight;
+    textarea.value = '';
+    textarea.style.height = '.58rem';
+    sentBox.style.minHeight = textarea.scrollHeight + 'px';
+  }
 
-  // function noData() {
-  //   let chatRoom = document.getElementById('chatRoom');
-  //   let list = chatRoom.getElementsByClassName('chat_box');
-  //   if (list.length === 0) {
-  //     let newDiv = document.createElement('div');
-  //     let html =
-  //       `<img src="./images/nodata.png" alt="暂无留言">
-  //     <p>暂无发言</p>`;
-  //     newDiv.className = 'no_data';
-  //     newDiv.id = 'noData';
-  //     newDiv.innerHTML = html;
-  //     chatRoom.appendChild(newDiv);
-  //   }
-  // }
-  // noData()
+  function noData() {
+    let chatRoom = document.getElementById('chatRoom');
+    let list = chatRoom.getElementsByClassName('chat_box');
+    if (list.length === 0) {
+      let newDiv = document.createElement('div');
+      let html =
+        `<img src="./images/nodata.png" alt="暂无留言">
+      <p>暂无发言</p>`;
+      newDiv.className = 'no_data';
+      newDiv.id = 'noData';
+      newDiv.innerHTML = html;
+      chatRoom.appendChild(newDiv);
+    }
+  }
+  noData()
 </script>
 
 </html>
