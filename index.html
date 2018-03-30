@@ -25,26 +25,7 @@
 
       //   }
       // });
-      if (window.history.length == 1) { //判断是第一次从微信菜单进入页面  
-        //写入空白历史记录  
-        pushHistory();
-      }
-      //延时监听     
-      setTimeout(function () {
-        //监听物理返回按钮    
-        window.addEventListener("popstate", function (e) {
-          alert("sfd");
-          wx.closeWindow()
-        }, false);
-
-      }, 300);
-      function pushHistory() {
-        var state = {
-          title: "title",
-          url: "#"
-        };
-        window.history.pushState(state, "title", "#");
-      }
+      wx.closeWindow();
     })();
   </script>
 </head>
