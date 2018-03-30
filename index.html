@@ -9,6 +9,7 @@
   <title>直播</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
+  <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
   <link rel="stylesheet" href="./css/common.css" />
   <link rel="stylesheet" href="./css/index.css" />
   <style>
@@ -25,20 +26,9 @@
 
       //   }
       // });
-      pushHistory();
-
-      window.addEventListener("popstate", function (e) { //回调函数中实现需要的功能
-          alert("我监听到了浏览器的返回按钮事件啦");
-          location.href = 'index.html'; //在这里指定其返回的地址
-        }, false);
-
-    function pushHistory() {
-      var state = {
-        title: "title",
-        url: "index.html"
+      window.onbeforeunload = function(event){    
+          return alert('您可能有数据没有保存'); 
       };
-      window.history.pushState(state, state.title, state.url);
-    }
     })();
   </script>
 </head>
