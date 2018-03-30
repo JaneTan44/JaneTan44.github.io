@@ -26,21 +26,11 @@
 
       //   }
       // });
-      document.addEventListener("touchstart", function () {
-        let wx_close = document.createElement('span');
-        wx_close.id = 'close';
-        document.body.appendChild(wx_close);
-
-        let wxClose = document.getElementById('close');
-        wxClose.addEventListener("touchstart", function () {
-          alert('test')
-        }, false);
-      }, false);
     })();
   </script>
 </head>
 
-<body>
+<body ontouchstart>
 
   <div class="container">
     <div class="player">
@@ -139,10 +129,12 @@
       }
     ]
   }, function (player) {
-    // this.player.tag.addEventListener("x5videoexitfullscreen", ()=>{
-    //     if(WeixinJSBridge)
-    //         WeixinJSBridge.call('closeWindow');
-    //  });
+    console.log(player)
+    let videoDiv = document.getElementById('J_prismPlayer')
+    let video = videoDiv.getElementsByTagName('video')[0]
+    video.addEventListener("x5videoexitfullscreen", function () {
+      alert("exit fullscreen")
+    });
 
     //var setLayout = function () {
     //设置播放器容器的高度
