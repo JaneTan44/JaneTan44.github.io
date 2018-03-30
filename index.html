@@ -19,14 +19,8 @@
   <script>
     (function () {
       document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
-      var isPageHide = false;
-      window.addEventListener('pageshow', function () {
-        if (isPageHide) {
-          window.location.reload();
-        }
-      });
-      window.addEventListener('pagehide', function () {
-        isPageHide = true;
+      document.addEventListener("visibilitychange", function(){
+          document.title = document.hidden ? "用户离开了" : "用户回来了";
       });
     })();
   </script>
