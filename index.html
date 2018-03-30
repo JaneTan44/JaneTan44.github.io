@@ -19,18 +19,10 @@
   <script>
     (function () {
       document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
-      pushHistory();
-      function pushHistory() {
-        var state = {
-          title: "title",
-          url: "__SELF__"
-        };
-        window.history.pushState(state, state.title, state.url);
-      }
-      window.addEventListener("popstate", function (e) { //回调函数中实现需要的功能
-        alert("我监听到了浏览器的返回按钮事件啦"); 
-        if (WeixinJSBridge) WeixinJSBridge.call('closeWindow');
-      }, false);
+      window.addEventListener("popstate", function(e) {
+    // 新版中使用wx.closeWindow()方法
+    wx.closeWindow()
+    }, false);
     })();
   </script>
 </head>
