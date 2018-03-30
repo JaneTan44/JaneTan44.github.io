@@ -9,12 +9,16 @@ body{
 .container {
   height: 100%;
 }
-
+.player{
+  height: 4.24rem;
+  overflow: hidden;
+}
 .player_header {
   height: .88rem;
   background: #2B2F3F;
   padding: .2rem .29rem .14rem .31rem;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .player_header>img {
