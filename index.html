@@ -20,7 +20,7 @@
     (function () {
       document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
       document.addEventListener("visibilitychange", function(){
-          document.title = document.hidden ? "用户离开了" : "用户回来了";
+          document.hidden ? alert('11') : alert('112');
       });
     })();
   </script>
