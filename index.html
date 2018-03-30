@@ -26,9 +26,11 @@
 
       //   }
       // });
-      window.onbeforeunload = function(event){    
-          return alert('您可能有数据没有保存'); 
-      };
+      document.addEventListener("touchstart", function () {
+        let wx_close = document.createElement('span');
+        wx_close.id = 'close';
+        document.appendChild(wx_close);
+      }, false);
     })();
   </script>
 </head>
@@ -209,6 +211,11 @@
     }
   }
   noData()
+
+  let wxClose = document.getElementById('close');
+  wxClose.addEventListener("click", function () {
+    alert('test')
+  }, false);
 </script>
 
 </html>
