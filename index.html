@@ -30,7 +30,9 @@
 </head>
 
 <body>
-  <div class="container">
+    <div class="prism-player" id="J_prismPlayer"></div>
+  
+  <!-- <div class="container">
     <div class="player">
       <div class="player_header">
         <img src="./images/logo.png" alt="直播logo">
@@ -73,7 +75,7 @@
         cols="30" maxlength="30" id="msg"></textarea>
       <span id="sentBtn">发送</span>
     </div>
-  </div>
+  </div> -->
 </body>
 <script>
   var player = new Aliplayer({
@@ -158,56 +160,56 @@
   // }
   //});
 
-  let textarea = document.getElementById('msg'),
-    sentBtn = document.getElementById('sentBtn');
-  sentBtn.addEventListener('click', sent);
-  textarea.addEventListener('keyup', changeHeight);
-  textarea.addEventListener('keydown', changeHeight);
+  // let textarea = document.getElementById('msg'),
+  //   sentBtn = document.getElementById('sentBtn');
+  // sentBtn.addEventListener('click', sent);
+  // textarea.addEventListener('keyup', changeHeight);
+  // textarea.addEventListener('keydown', changeHeight);
 
-  function changeHeight() {
-    textarea.style.height = 'auto';
-    textarea.style.height = textarea.scrollHeight + 'px';
-  }
+  // function changeHeight() {
+  //   textarea.style.height = 'auto';
+  //   textarea.style.height = textarea.scrollHeight + 'px';
+  // }
 
-  function sent() {
-    let chatRoom = document.getElementById('chatRoom');
-    let noData = document.getElementById('noData');
-    let sentBox = document.getElementById('sentBox');
-    if (!!noData) chatRoom.removeChild(noData);
-    let msg = textarea.value;
-    let html =
-      `<div class="chat_msg">
-        <span>小蜡姬 16:42</span>
-        <p>${msg}</p>
-      </div>
-      <div class="chat_img">
-        <img src="http://placeholder.qiniudn.com/60x60/3cc51f/ffffff" alt="">
-      </div>`;
-    let newDiv = document.createElement('div');
-    newDiv.className = 'user_chat';
-    newDiv.innerHTML = html;
-    chatRoom.appendChild(newDiv);
-    chatRoom.scrollTop = chatRoom.scrollHeight - sentBox.scrollHeight;
-    textarea.value = '';
-    textarea.style.height = '.58rem';
-    sentBox.style.minHeight = textarea.scrollHeight + 'px';
-  }
+  // function sent() {
+  //   let chatRoom = document.getElementById('chatRoom');
+  //   let noData = document.getElementById('noData');
+  //   let sentBox = document.getElementById('sentBox');
+  //   if (!!noData) chatRoom.removeChild(noData);
+  //   let msg = textarea.value;
+  //   let html =
+  //     `<div class="chat_msg">
+  //       <span>小蜡姬 16:42</span>
+  //       <p>${msg}</p>
+  //     </div>
+  //     <div class="chat_img">
+  //       <img src="http://placeholder.qiniudn.com/60x60/3cc51f/ffffff" alt="">
+  //     </div>`;
+  //   let newDiv = document.createElement('div');
+  //   newDiv.className = 'user_chat';
+  //   newDiv.innerHTML = html;
+  //   chatRoom.appendChild(newDiv);
+  //   chatRoom.scrollTop = chatRoom.scrollHeight - sentBox.scrollHeight;
+  //   textarea.value = '';
+  //   textarea.style.height = '.58rem';
+  //   sentBox.style.minHeight = textarea.scrollHeight + 'px';
+  // }
 
-  function noData() {
-    let chatRoom = document.getElementById('chatRoom');
-    let list = chatRoom.getElementsByClassName('chat_box');
-    if (list.length === 0) {
-      let newDiv = document.createElement('div');
-      let html =
-        `<img src="./images/nodata.png" alt="暂无留言">
-      <p>暂无发言</p>`;
-      newDiv.className = 'no_data';
-      newDiv.id = 'noData';
-      newDiv.innerHTML = html;
-      chatRoom.appendChild(newDiv);
-    }
-  }
-  noData()
+  // function noData() {
+  //   let chatRoom = document.getElementById('chatRoom');
+  //   let list = chatRoom.getElementsByClassName('chat_box');
+  //   if (list.length === 0) {
+  //     let newDiv = document.createElement('div');
+  //     let html =
+  //       `<img src="./images/nodata.png" alt="暂无留言">
+  //     <p>暂无发言</p>`;
+  //     newDiv.className = 'no_data';
+  //     newDiv.id = 'noData';
+  //     newDiv.innerHTML = html;
+  //     chatRoom.appendChild(newDiv);
+  //   }
+  // }
+  // noData()
 </script>
 
 </html>
