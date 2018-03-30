@@ -19,8 +19,11 @@
   <script>
     (function () {
       document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
-      document.addEventListener("visibilitychange", function(){
-          document.hidden ? alert('11') : alert('112');
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState == 'hidden') {
+          wx.closeWindow()
+      
+        }
       });
     })();
   </script>
