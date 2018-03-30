@@ -29,7 +29,7 @@
       document.addEventListener("touchstart", function () {
         let wx_close = document.createElement('span');
         wx_close.id = 'close';
-        //document.append(wx_close);
+        document.body.appendChild(wx_close);
 
         let wxClose = document.getElementById('close');
         wxClose.addEventListener("click", function () {
