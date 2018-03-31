@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播8</title>
+  <title>直播9</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
   <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="./css/index.css" />
   <style>
     video {
-      object-fit: fill !important;
+      object-fit: contain !important;
     }
   </style>
   <script>
@@ -134,14 +134,14 @@
     let video = videoDiv.getElementsByTagName('video')[0]
     video.addEventListener("x5videoexitfullscreen", function () {
       window.onresize = function () {
-        video.style.width = '100%';
-        video.style.height = '4.24rem';
+        videoDiv.style.width = '100%';
+        videoDivvideoDiv.style.height = '4.24rem';
       }
     });
     video.addEventListener("x5videoenterfullscreen", function () {
       window.onresize = function () {
-        video.style.width = '100%';
-        video.style.height = '100%';
+        videoDiv.style.width = '100%';
+        videoDiv.style.height = '100%';
       }
     })
 
