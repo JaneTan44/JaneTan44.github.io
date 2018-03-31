@@ -130,9 +130,7 @@
     ]
   }, function (player) {
     console.log(player)
-    h5FullScreen (player)
-    // playerData = player;
-    // controlVideo (player)
+    controlVideo (player)
     // player.isFullScreen = true;
 
     //var setLayout = function () {
@@ -181,13 +179,6 @@
     video.setAttribute("x5-video-orientation", "landscape");
   }
 
-  function autoOrientation(video){
-    video.setAttribute("x5-video-orientation", "landscape|portrait")
-  }
-  function h5FullScreen (video) {
-    video.setAttribute("x5-video-player-type", "true");
-    video.setAttribute("x5-video-player-fullscreen", "true");  
-  }
   let textarea = document.getElementById('msg'),
     sentBtn = document.getElementById('sentBtn');
   sentBtn.addEventListener('click', sent);
