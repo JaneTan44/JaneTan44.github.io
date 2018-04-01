@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播1</title>
+  <title>直播2</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
   <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
@@ -170,6 +170,9 @@
     player.tag.addEventListener("x5videoenterfullscreen", function () {
       window.onresize = function () {
         player._el.style.overflow = 'auto';
+        alert(player._el.clientWidth)
+        alert(player.tag.clientWidth)
+        alert(window.screen.height)
         player._el.style.width = window.screen.height + 'px';
         player._el.style.height = window.screen.height + 'px';
         player.tag.style.width = window.screen.height + 'px';
