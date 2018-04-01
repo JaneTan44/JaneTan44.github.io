@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播2</title>
+  <title>直播1</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
   <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
@@ -30,10 +30,50 @@
 </head>
 
 <body ontouchstart>
-<div>
-    <div class="prism-player" id="J_prismPlayer"></div>
-</div>
-<div></div>
+<div class="container">
+    <div class="player">
+      <div class="player_header">
+        <img src="./images/logo.png" alt="直播logo">
+        <span>当前
+          <b> 8792 </b>人观看直播</span>
+      </div>
+      <div class="prism-player" id="J_prismPlayer"></div>
+      <div class="player_footer">
+        <h3>WE2018春夏新品站展览1</h3>
+        <p>直播嘉宾：
+          <span>谢继东老师</span>
+        </p>
+        <p>直播时间：
+          <span>2018.03.16 9:00 - 12:00</span>
+        </p>
+      </div>
+    </div>
+    <div class="chat_room" id="chatRoom">
+      <div class="chat_box">
+        <div class="chat_img">
+          <img src="http://placeholder.qiniudn.com/60x60/3cc51f/ffffff" alt="">
+        </div>
+        <div class="chat_msg">
+          <span>小蜡姬 16:42</span>
+          <p>由各种物质组成的巨型球状天体</p>
+        </div>
+      </div>
+      <div class="user_chat">
+        <div class="chat_msg">
+          <span>小蜡姬 16:42</span>
+          <p>由各种物质组成的巨型球状天体</p>
+        </div>
+        <div class="chat_img">
+          <img src="http://placeholder.qiniudn.com/60x60/3cc51f/ffffff" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="sent_box" id="sentBox">
+      <textarea autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="说两句捧个场吧，限制30个字" rows="1"
+        cols="30" maxlength="30" id="msg"></textarea>
+      <span id="sentBtn">发送</span>
+    </div>
+  </div>
 </body>
 <script>
   var playerData = null;
@@ -88,7 +128,7 @@
     ]
   }, function (player) {
     console.log(player)
-    //controlVideo (player)
+    controlVideo (player)
     // player.isFullScreen = true;
     //var setLayout = function () {
     //设置播放器容器的高度
@@ -111,6 +151,8 @@
   //   console.log(video.style.height)
   // }
   //});
+  
+  let sentBox = document.getElementById('sentBox');
   function controlVideo (player) {
      player.tag.addEventListener("x5videoexitfullscreen", function () {
       //wx && wx.closeWindow();
@@ -121,6 +163,7 @@
         player.tag.style.width = '100%';
         player.tag.style.height = '4.24rem';
         player.tag.style.objectFit = 'contain';
+        sentBox.style.display = 'block';
       }
     });
     
@@ -135,12 +178,71 @@
         player.tag.style.width = '100%';
         player.tag.style.height = window.screen.width + 'px';
         player.tag.style.objectFit = 'contain';
+        sentBox.style.display = 'none';
       }
     })
    
   }
+  function portrait(video){
+    video.setAttribute("x5-video-orientation", "portrait");
+  }
+  function landscape(video){
+    video.setAttribute("x5-video-orientation", "landscape");
+  }
   
-  
+  let textarea = document.getElementById('msg'),
+    sentBtn = document.getElementById('sentBtn');
+  sentBox.style.top = (window.screenHeight - sentBox.clientHeight)+'px';
+  alert(sentBox.style.top)
+  sentBtn.addEventListener('click', sent);
+  textarea.addEventListener('keyup', changeHeight);
+  textarea.addEventListener('keydown', changeHeight);
+
+  function changeHeight() {
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
+    // controlVideo (playerData)
+  }
+
+  function sent() {
+    let chatRoom = document.getElementById('chatRoom');
+    let noData = document.getElementById('noData');
+    
+    if (!!noData) chatRoom.removeChild(noData);
+    let msg = textarea.value;
+    let html =
+      `<div class="chat_msg">
+        <span>小蜡姬 16:42</span>
+        <p>${msg}</p>
+      </div>
+      <div class="chat_img">
+        <img src="http://placeholder.qiniudn.com/60x60/3cc51f/ffffff" alt="">
+      </div>`;
+    let newDiv = document.createElement('div');
+    newDiv.className = 'user_chat';
+    newDiv.innerHTML = html;
+    chatRoom.appendChild(newDiv);
+    chatRoom.scrollTop = chatRoom.scrollHeight - sentBox.scrollHeight;
+    textarea.value = '';
+    textarea.style.height = '.58rem';
+    sentBox.style.minHeight = textarea.scrollHeight + 'px';
+  }
+
+  function noData() {
+    let chatRoom = document.getElementById('chatRoom');
+    let list = chatRoom.getElementsByClassName('chat_box');
+    if (list.length === 0) {
+      let newDiv = document.createElement('div');
+      let html =
+        `<img src="./images/nodata.png" alt="暂无留言">
+      <p>暂无发言</p>`;
+      newDiv.className = 'no_data';
+      newDiv.id = 'noData';
+      newDiv.innerHTML = html;
+      chatRoom.appendChild(newDiv);
+    }
+  }
+  noData()  
 </script>
 
 </html>
