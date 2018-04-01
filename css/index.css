@@ -10,8 +10,6 @@ body{
   height: 100%;
 }
 .prism-player{
-  height: 4.24rem;
-  overflow: hidden;
   position: relative;
   z-index: 9999;
 }
