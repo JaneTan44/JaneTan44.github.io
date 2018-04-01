@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播7</title>
+  <title>直播1</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
   <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
@@ -90,13 +90,16 @@
     useH5Prism: true,
     useFlashPrism: false,
     source: "http://player.alicdn.com/video/aliyunmedia.mp4",
-    cover: "",
+    cover: "http://cdnoss.youkouyang.com/cover.png",
     x5_type: 'h5',
     x5_fullscreen: true, //全屏播放
     x5_orientation: 'landscape',
     skinLayout: [{
         "name": "bigPlayButton",
-        "align": "cc"
+        //"align": "cc"
+         align: "blabs",
+          x: "70",
+          y: "150"
       },
       {
         "name": "controlBar",
@@ -157,11 +160,11 @@
   function controlVideo (player) {
     
     player.tag.addEventListener("x5videoexitfullscreen", function () {
-      wx && wx.closeWindow();
-      //window.onresize = function () {
-        //player._el.style.width = '100%';
-        //player._el.style.height = '4.24rem';
-      //}
+      //wx && wx.closeWindow();
+      window.onresize = function () {
+        player._el.style.width = '100%';
+        player._el.style.height = '4.24rem';
+      }
     });
     //player.tag.addEventListener("x5videoenterfullscreen", function () {
       //window.onresize = function () {
