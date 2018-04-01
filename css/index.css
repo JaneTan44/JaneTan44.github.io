@@ -73,6 +73,10 @@ body{
   padding: .1rem .3rem .2rem;
   position: relative;
 }
+#chatRoom{
+    padding: .1rem .3rem .2rem;
+    height: calc(100% - .98rem);
+}
 
 .chat_img>img {
   width: 100%;
@@ -96,7 +100,7 @@ body{
   align-items: center;
   margin-top: .2rem;
 }
-.chat_room>div:first-child{
+#chat_room>div:first-child{
   margin-top: .1rem;
 }
 
@@ -140,7 +144,7 @@ body{
   padding: .2rem .3rem;
   background: #2b2f3f;
   position: absolute;
-  bottom: 0;
+  bottom: .89rem
   /* display: block; */
   width: 100%;
   z-index: 9999;  
