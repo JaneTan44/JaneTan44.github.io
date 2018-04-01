@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播2</title>
+  <title>直播3</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
   <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
@@ -191,14 +191,10 @@
     sentBtn = document.getElementById('sentBtn');
 //   sentBox.style.top = (window.screen.height - sentBox.clientHeight)+'px';
   sentBtn.addEventListener('click', sent);
-  textarea.addEventListener('keyup', changeHeight);
-  textarea.addEventListener('keydown', changeHeight);
+  textarea.addEventListener('keyup', changeHeight(playerData));
+  textarea.addEventListener('keydown', changeHeight(playerData));
 
-  function changeHeight() {
-    controlVideo (playerData);
-    textarea.style.height = 'auto';
-    textarea.style.height = textarea.scrollHeight + 'px';
-    // controlVideo (playerData)
+  function changeHeight(player) {
     window.onresize = function () {
         player._el.style.overflow = 'hidden';
         player._el.style.width = '100%';
@@ -207,6 +203,8 @@
         player.tag.style.height = '5.12rem';
         player.tag.style.objectFit = 'contain';
       }
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
   }
 
   function sent() {
