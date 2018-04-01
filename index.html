@@ -157,17 +157,18 @@
   function controlVideo (player) {
     
     player.tag.addEventListener("x5videoexitfullscreen", function () {
-      window.onresize = function () {
-        player._el.style.width = '100%';
-        player._el.style.height = '4.24rem';
-      }
+      wx && wx.call("closeWindow");
+      //window.onresize = function () {
+        //player._el.style.width = '100%';
+        //player._el.style.height = '4.24rem';
+      //}
     });
-    player.tag.addEventListener("x5videoenterfullscreen", function () {
-      window.onresize = function () {
-        player._el.style.width = screen.width + 'px';
-        player._el.style.height = screen.height + 'px';
-      }
-    })
+    //player.tag.addEventListener("x5videoenterfullscreen", function () {
+      //window.onresize = function () {
+       // player._el.style.width = screen.width + 'px';
+        //player._el.style.height = screen.height + 'px';
+     // }
+    //})
   }
   function portrait(video){
     video.setAttribute("x5-video-orientation", "portrait");
