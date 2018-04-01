@@ -13,9 +13,6 @@ body{
   position: relative;
   z-index: 9999;
 }
-.prism-player .prism-controlbar{
-  position: relative !important;
-}
 .player_header {
   height: .88rem;
   background: #2B2F3F;
