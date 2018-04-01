@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播6</title>
+  <title>直播7</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
   <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
@@ -191,7 +191,7 @@
     sentBtn = document.getElementById('sentBtn'),
     chatRoom = document.getElementById('chatRoom'),
     chatWrap = document.getElementById('chatWrap');
-    chatRoom.style.height = (chatRoom.clientHeight - sentBox.clientHeight)/100 + 'rem';
+    chatRoom.style.height = (chatRoom.clientHeight - sentBox.clientHeight) + 'px';
   sentBtn.addEventListener('click', sent);
   textarea.addEventListener('keyup', changeHeight(playerData));
   textarea.addEventListener('keydown', changeHeight(playerData));
