@@ -11,7 +11,6 @@ body{
 }
 .prism-player{
   position: relative;
-  z-index: 9999;
 }
 .player_header {
   height: .88rem;
@@ -19,6 +18,8 @@ body{
   padding: .2rem .29rem .14rem .31rem;
   box-sizing: border-box;
   overflow: hidden;
+  position: absolute;
+  z-index: 1;
 }
 
 .player_header>img {
@@ -137,8 +138,8 @@ body{
   box-sizing: border-box;
   padding: .2rem .3rem;
   background: #2b2f3f;
-  position: fixed;
-  bottom: 0;
+  position: absolute;
+/*   bottom: 0; */
   /* display: block; */
   width: 100%;
   z-index: 9999;  
