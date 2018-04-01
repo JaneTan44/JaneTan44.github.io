@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播1</title>
+  <title>直播2</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
   <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
@@ -88,7 +88,7 @@
     ]
   }, function (player) {
     console.log(player)
-    controlVideo (player)
+    //controlVideo (player)
     // player.isFullScreen = true;
     //var setLayout = function () {
     //设置播放器容器的高度
@@ -134,7 +134,7 @@
         player._el.style.height = window.screen.width + 'px';
         player.tag.style.width = '100%';
         player.tag.style.height = window.screen.width + 'px';
-        player.tag.style.objectFit = 'fill';
+        player.tag.style.objectFit = 'contain';
       }
     })
    
