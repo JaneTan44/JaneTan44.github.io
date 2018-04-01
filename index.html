@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播3</title>
+  <title>直播4</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
   <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
@@ -172,11 +172,12 @@
         player._el.style.overflow = 'auto';
         //alert(player._el.clientWidth)
         //alert(player.tag.clientWidth)
-        //alert(window.screen.height)
-        player._el.style.width = window.screen.height + 'px';
-        player._el.style.height = window.screen.width + 'px';
-        player.tag.style.width = window.screen.height + 'px';
-        player.tag.style.height = window.screen.width + 'px';
+        alert(window.screen.width)
+        alert(window.screen.height)
+        player._el.clientWidth = window.screen.height + 'px';
+        player._el.style.clientHeight = window.screen.width + 'px';
+        player.tag.style.clientWidth = window.screen.height + 'px';
+        player.tag.style.clientHeight = window.screen.width + 'px';
         player.tag.style.objectFit = 'fill';
       }
     })
