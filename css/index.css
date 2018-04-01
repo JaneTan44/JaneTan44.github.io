@@ -74,7 +74,7 @@ body{
 }
 #chatRoom{
     padding: .1rem .3rem .2rem;
-    height: calc(100% - .98rem);
+    height: 100%;
     overflow: auto;
 }
 
