@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播6</title>
+  <title>直播7</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
   <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
@@ -154,7 +154,7 @@
   // }
   //});
   function controlVideo (player) {
-     player.tag.addEventListener("x5videoexitfullscreen", function () {
+     player.tag.addEventListener("x5cancelFullScreen", function () {
       //wx && wx.closeWindow();
       window.onresize = function () {
         player._el.style.overflow = 'hidden';
@@ -166,7 +166,7 @@
       }
     });
     
-    player.tag.addEventListener("x5videoenterfullscreen", function () {
+    player.tag.addEventListener("x5requestFullScreen", function () {
       window.onresize = function () {
         player.tag.setAttribute("x5_type", "h5");
         player.tag.setAttribute("x5_fullscreen", "true");
