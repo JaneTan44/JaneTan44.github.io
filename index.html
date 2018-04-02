@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播3</title>
+  <title>直播5</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
   <link rel="stylesheet" href="./css/common.css" />
@@ -140,7 +140,7 @@
         player.tag.style.objectFit = 'contain';
         sentBox.style.display = 'block';
       }
-    });
+    },false);
 
     player.tag.addEventListener("x5videoenterfullscreen", function () {
       window.onresize = function () {
@@ -151,13 +151,15 @@
         player._el.width = window.screen.height + 'px';
         player._el.style.height = window.screen.width + 'px';
         player.tag.style.width = '100%';
-        player.tag.style.height = window.screen.width + 'px';
+        player.tag.style.height = '100%';
         player.tag.style.objectFit = 'fill';
         sentBox.style.display = 'none';
-        alert(player._el.style.width)
-        alert(player.tag.style.width)
+        alert('player._el.style.width'+player._el.style.width)
+        alert('player.tag.style.height'+player.tag.style.width)
+        alert('player._el.style.width'+player._el.style.height)
+        alert('player.tag.style.height'+player.tag.style.height)
       }
-    });
+    },false);
 
   }
 
@@ -166,9 +168,9 @@
     chatRoom = document.getElementById('chatRoom'),
     chatWrap = document.getElementById('chatWrap');
   chatRoom.style.height = (chatWrap.clientHeight - sentBox.clientHeight) + 'px';
-  sentBtn.addEventListener('click', sent);
-  textarea.addEventListener('keyup', changeHeight);
-  textarea.addEventListener('keydown', changeHeight);
+  sentBtn.addEventListener('click', sent, false);
+  textarea.addEventListener('keyup', changeHeight, false);
+  textarea.addEventListener('keydown', changeHeight, false);
 
   function changeHeight(player) {
     window.onresize = function () {
