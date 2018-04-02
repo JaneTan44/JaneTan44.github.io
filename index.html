@@ -135,15 +135,7 @@
   let playBtn = document.getElementsByClassName('prism-big-play-btn')[0];
   function controlVideo(player) {
     player.tag.addEventListener("x5videoexitfullscreen", function () {
-      window.onresize = function () {
-        player._el.style.overflow = 'hidden';
-        player._el.style.width = '100%';
-        player._el.style.height = '5.12rem';
-        player.tag.style.width = '100%';
-        player.tag.style.height = '5.12rem';
-        player.tag.style.objectFit = 'contain';
-        sentBox.style.display = 'block';
-      }
+      initVideo (player) 
       // player.fullscreenService.cancelFullScreen()
     });
     
@@ -154,6 +146,18 @@
     //   fullScreen(player, window.screen.height, window.screen.width)
     // });
 
+  }
+  //初始化video宽高
+  function initVideo (player) {
+  window.onresize = function () {
+        player._el.style.overflow = 'hidden';
+        player._el.style.width = '100%';
+        player._el.style.height = '5.12rem';
+        player.tag.style.width = '100%';
+        player.tag.style.height = '5.12rem';
+        player.tag.style.objectFit = 'contain';
+        sentBox.style.display = 'block';
+      }
   }
 
   // function fullScreen(player, w, h) {
@@ -176,20 +180,13 @@
     sentBtn = document.getElementById('sentBtn'),
     chatRoom = document.getElementById('chatRoom'),
     chatWrap = document.getElementById('chatWrap');
-  chatRoom.style.height = (chatWrap.clientHeight - sentBox.clientHeight) + 'px';
+  chatRoom.style.height = (chatWrap.clientHeight - sentBox.clientHeight) + 'px';//聊天内容框动态高度
   sentBtn.addEventListener('click', sent);
   textarea.addEventListener('keyup', changeHeight);
   textarea.addEventListener('keydown', changeHeight);
 
   function changeHeight(player) {
-    // window.onresize = function () {
-    //   playerData._el.style.overflow = 'hidden';
-    //   playerData._el.style.width = window.screen.width + 'px';
-    //   playerData._el.style.height = '5.12rem';
-    //   playerData.tag.style.width = window.screen.width + 'px';
-    //   playerData.tag.style.height = '5.12rem';
-    //   playerData.tag.style.objectFit = 'contain';
-    // }
+    initVideo (player) 
     sentBox.style.height = 'auto';
     textarea.style.height = textarea.scrollHeight + 'px';
     sentBox.style.position = 'fixed';
