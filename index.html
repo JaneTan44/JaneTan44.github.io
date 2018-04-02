@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播666</title>
+  <title>直播7</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
+  <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
   <link rel="stylesheet" href="./css/common.css" />
   <link rel="stylesheet" href="./css/index.css" />
   <style>
@@ -19,12 +20,17 @@
   <script>
     (function () {
       document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
+      // document.addEventListener('visibilitychange', () => {
+      //   if (document.visibilityState == 'hidden') {
+      //     wx.closeWindow()
+      //   }
+      // });
     })();
   </script>
 </head>
 
 <body ontouchstart>
-  <div class="container">
+<div class="container">
     <div class="player">
       <div class="player_header">
         <img src="./images/logo.png" alt="直播logo">
@@ -64,7 +70,8 @@
         </div>
       </div>
       <div class="sent_box" id="sentBox">
-        <textarea autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="说两句捧个场吧，限制30个字" cols="30" maxlength="30" id="msg"></textarea>
+        <textarea autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="说两句捧个场吧，限制30个字" rows="1"
+          cols="30" maxlength="30" id="msg"></textarea>
         <span id="sentBtn">发送</span>
       </div>
     </div>
@@ -83,7 +90,7 @@
     useH5Prism: true,
     useFlashPrism: false,
     source: "http://player.alicdn.com/video/aliyunmedia.mp4",
-    //cover: "https://cdnoss.youkouyang.com/cover.png",//视频封面图
+    //cover: "https://cdnoss.youkouyang.com/cover.png",
     x5_type: 'h5',
     x5_fullscreen: true, //全屏播放
     x5_orientation: 'landscape',
@@ -124,12 +131,34 @@
   }, function (player) {
     console.log(player)
     playerData = player
+    //controlVideo (player)
+    // player.isFullScreen = true;
+    //var setLayout = function () {
+    //设置播放器容器的高度
+    // var height; //根据实际情况设置高度
+    //player.el().style.width = window.innerWidth + "px";
+    //player.el().style.height = window.innerHeight + "px";
+    //}
+    //window.onresize = function () {
+    //setLayout();
+    //}
+    // player.on("requestFullScreen", function () {
+    //setLayout();
   });
-
+  // window.onresize = function () {
+  //   video.style.width = window.innerWidth + "px";
+  //   video.style.height = window.innerHeight + "px";
+  //   console.log(window.innerWidth)
+  //   console.log(window.innerHeight)
+  //   console.log(video.style.width)
+  //   console.log(video.style.height)
+  // }
+  //});
+  
   let sentBox = document.getElementById('sentBox');
-
-  function controlVideo(player) {
-    player.tag.addEventListener("x5videoexitfullscreen", function () {
+  function controlVideo (player) {
+     player.tag.addEventListener("x5videoexitfullscreen", function () {
+      //wx && wx.closeWindow();
       window.onresize = function () {
         player._el.style.overflow = 'hidden';
         player._el.style.width = '100%';
@@ -140,7 +169,7 @@
         sentBox.style.display = 'block';
       }
     });
-
+    
     player.tag.addEventListener("x5videoenterfullscreen", function () {
       window.onresize = function () {
         player.tag.setAttribute("x5_type", "h5");
@@ -155,35 +184,34 @@
         sentBox.style.display = 'none';
       }
     })
-
+   
   }
-
+  
   let textarea = document.getElementById('msg'),
     sentBtn = document.getElementById('sentBtn'),
     chatRoom = document.getElementById('chatRoom'),
     chatWrap = document.getElementById('chatWrap');
-  chatRoom.style.height = (chatRoom.clientHeight - sentBox.clientHeight) + 'px';
+    chatRoom.style.height = (chatRoom.clientHeight - sentBox.clientHeight) + 'px';
   sentBtn.addEventListener('click', sent);
   textarea.addEventListener('keyup', changeHeight(playerData));
   textarea.addEventListener('keydown', changeHeight(playerData));
-
   function changeHeight(player) {
     window.onresize = function () {
-      player._el.style.overflow = 'hidden';
-      player._el.style.width = '100%';
-      player._el.style.height = '5.12rem';
-      player.tag.style.width = '100%';
-      player.tag.style.height = '5.12rem';
-      player.tag.style.objectFit = 'contain';
-    }
-    sentBox.style.height = 'auto'; 
+        player._el.style.overflow = 'hidden';
+        player._el.style.width = '100%';
+        player._el.style.height = '5.12rem';
+        player.tag.style.width = '100%';
+        player.tag.style.height = '5.12rem';
+        player.tag.style.objectFit = 'contain';
+      }
+    textarea.style.height = 'auto';
     textarea.style.height = textarea.scrollHeight + 'px';
     sentBox.style.position = 'fixed';
     sentBox.style.bottom = '0';
   }
-
   function sent() {
     let noData = document.getElementById('noData');
+    
     if (!!noData) chatRoom.removeChild(noData);
     let msg = textarea.value;
     let html =
@@ -201,11 +229,10 @@
     chatRoom.scrollTop = chatRoom.scrollHeight - sentBox.scrollHeight;
     textarea.value = '';
     textarea.style.height = '.58rem';
-    sentBox.style.height = '.98rem';
+    sentBox.style.minHeight = textarea.scrollHeight + 'px';
     sentBox.style.position = 'absolute';
     sentBox.style.bottom = '.89rem';
   }
-
   function noData() {
     let chatRoom = document.getElementById('chatRoom');
     let list = chatRoom.getElementsByClassName('chat_box');
@@ -220,7 +247,7 @@
       chatRoom.appendChild(newDiv);
     }
   }
-  noData()
+  noData()  
 </script>
 
 </html>
