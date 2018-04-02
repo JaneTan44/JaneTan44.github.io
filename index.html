@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播1</title>
+  <title>直播11</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
   <link rel="stylesheet" href="./css/common.css" />
@@ -164,18 +164,18 @@
     chatWrap = document.getElementById('chatWrap');
   chatRoom.style.height = (chatRoom.clientHeight - sentBox.clientHeight) + 'px';
   sentBtn.addEventListener('click', sent);
-  textarea.addEventListener('keyup', changeHeight());
-  textarea.addEventListener('keydown', changeHeight());
+  textarea.addEventListener('keyup', changeHeight);
+  textarea.addEventListener('keydown', changeHeight);
 
-  function changeHeight(player) {
-    // window.onresize = function () {
-    //   player._el.style.overflow = 'hidden';
-    //   player._el.style.width = '100%';
-    //   player._el.style.height = '5.12rem';
-    //   player.tag.style.width = '100%';
-    //   player.tag.style.height = '5.12rem';
-    //   player.tag.style.objectFit = 'contain';
-    // }
+  function changeHeight() {
+    window.onresize = function () {
+      playerData._el.style.overflow = 'hidden';
+      playerData._el.style.width = '100%';
+      playerData._el.style.height = '5.12rem';
+      playerData.tag.style.width = '100%';
+      playerData.tag.style.height = '5.12rem';
+      playerData.tag.style.objectFit = 'contain';
+    }
     sentBox.style.height = 'auto'; 
     textarea.style.height = textarea.scrollHeight + 'px';
     sentBox.style.position = 'fixed';
