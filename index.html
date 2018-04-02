@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播2</title>
+  <title>直播3</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
   <link rel="stylesheet" href="./css/common.css" />
@@ -69,6 +69,7 @@
         <span id="sentBtn">发送</span>
       </div>
     </div>
+    <div id="modalTip"></div>
   </div>
 </body>
 <script>
@@ -209,6 +210,10 @@
     let noData = document.getElementById('noData');
     if (!!noData) chatRoom.removeChild(noData);
     let msg = textarea.value;
+    if(msg.length === 0){
+      tipModal('内容不能为空','fail','modalTip','fail');
+      return;
+    }
     let html =
       `<div class="chat_msg">
         <span>小蜡姬 16:42</span>
