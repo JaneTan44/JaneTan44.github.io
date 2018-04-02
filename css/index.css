@@ -164,7 +164,6 @@ body{
   resize: none;
   border-radius: .1rem;
   border: none;
-  overflow:hidden;
 }
 
 .sent_box>span {
