@@ -199,6 +199,7 @@
     let msg = textarea.value;
     if(msg.length === 0){
       tipModal('内容不能为空','fail','modalTip','fail');
+      return;
     }
     let html =
       `<div class="chat_msg">
