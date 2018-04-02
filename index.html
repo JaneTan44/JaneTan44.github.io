@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播2</title>
+  <title>直播4</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
   <link rel="stylesheet" href="./css/common.css" />
@@ -64,7 +64,8 @@
         </div>
       </div>
       <div class="sent_box" id="sentBox">
-        <textarea autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="说两句捧个场吧，限制30个字" cols="30" maxlength="30" id="msg"></textarea>
+        <textarea autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="说两句捧个场吧，限制30个字" cols="30"
+          maxlength="30" id="msg"></textarea>
         <span id="sentBtn">发送</span>
       </div>
     </div>
@@ -156,25 +157,25 @@
     });
 
     player.tag.addEventListener("x5videoenterfullscreen", function () {
-      window.onresize = function () {
-        player.tag.setAttribute("x5_type", "h5");
-        player.tag.setAttribute("x5_fullscreen", "true");
-        player.tag.setAttribute("x5_video_position", "top");
-        player._el.style.overflow = 'auto';
-        player._el.width = window.screen.height + 'px';
-        player._el.style.height = window.screen.width + 'px';
-        player.tag.style.width = '100%';
-        player.tag.style.height = '100%';
-        player.tag.style.objectFit = 'fill';
-        sentBox.style.display = 'none';
-        alert('test')
-        // alert('player._el.style.width'+player._el.style.width)
-        // alert('player.tag.style.height'+player.tag.style.width)
-        // alert('player._el.style.width'+player._el.style.height)
-        // alert('player.tag.style.height'+player.tag.style.height)
-      }
+      fullScreen(player,window.screen.height,window.screen.width)
     });
 
+  }
+
+  function fullScreen(player,w,h) {
+    window.onresize = function () {
+      player.tag.setAttribute("x5_type", "h5");
+      player.tag.setAttribute("x5_fullscreen", "true");
+      player.tag.setAttribute("x5_video_position", "top");
+      player._el.style.overflow = 'auto';
+      player._el.width = w + 'px';
+      player._el.style.height = h + 'px';
+      player.tag.style.width = '100%';
+      player.tag.style.height = '100%';
+      player.tag.style.objectFit = 'fill';
+      sentBox.style.display = 'none';
+      alert('全屏')
+    }
   }
 
   let textarea = document.getElementById('msg'),
@@ -195,12 +196,12 @@
       playerData.tag.style.height = '5.12rem';
       playerData.tag.style.objectFit = 'contain';
     }
-    sentBox.style.height = 'auto'; 
+    sentBox.style.height = 'auto';
     textarea.style.height = textarea.scrollHeight + 'px';
     sentBox.style.position = 'fixed';
     sentBox.style.bottom = '0';
-    playerData.tag.addEventListener('cancelFullScreen',function(){
-        alert('cancelFullScreen')
+    playerData.tag.addEventListener('cancelFullScreen', function () {
+      alert('cancelFullScreen')
     })
   }
 
@@ -226,9 +227,15 @@
     sentBox.style.height = '.98rem';
     sentBox.style.position = 'absolute';
     sentBox.style.bottom = '0';
-    playerData.tag.addEventListener('cancelFullScreen',function(){
-        alert('cancelFullScreen')
-    })
+    playerData.tag.addEventListener('cancelFullScreen', function () {
+      alert('cancelFullScreen')
+    });
+    playBtn.addEventListener('click',function(){
+      playerData.tag.addEventListener('requestFullScreen',function(){
+        alert('requestFullScreen')
+        fullScreen(playerData,640,360)
+      })
+    });
   }
 
   function noData() {
@@ -246,8 +253,6 @@
     }
   }
   noData()
-
-  
 </script>
 
 </html>
