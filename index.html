@@ -125,26 +125,25 @@
     console.log(player)
     playerData = player;
     // controlVideo(player);
-    let playBtn = document.getElementsByClassName('prism-big-play-btn')[0];
-    playBtn.addEventListener('click',function(){
-      controlVideo(player);
-      // playerData.tag.addEventListener('requestFullScreen',function(){
-      //   alert('requestFullScreen')
-      //   player._el.style.overflow = 'auto';
-      //   player._el.width = window.screen.height + 'px';
-      //   player._el.style.height = window.screen.width + 'px';
-      //   player.tag.style.width = '100%';
-      //   player.tag.style.height = '100%';
-      //   player.tag.style.objectFit = 'fill';
-      //   sentBox.style.display = 'none';
-      // })
-    });
+    // let playBtn = document.getElementsByClassName('prism-big-play-btn')[0];
+    // playBtn.addEventListener('click',function(){
+    //   playerData.tag.addEventListener('requestFullScreen',function(){
+    //     alert('requestFullScreen')
+    //     player._el.style.overflow = 'auto';
+    //     player._el.width = window.screen.height + 'px';
+    //     player._el.style.height = window.screen.width + 'px';
+    //     player.tag.style.width = '100%';
+    //     player.tag.style.height = '100%';
+    //     player.tag.style.objectFit = 'fill';
+    //     sentBox.style.display = 'none';
+    //   })
+    // });
   });
 
   let sentBox = document.getElementById('sentBox');
 
   function controlVideo(player) {
-    player.tag.addEventListener("cancelFullScreen", function () {
+    player.tag.addEventListener("x5videoexitfullscreen", function () {
       window.onresize = function () {
         player._el.style.overflow = 'hidden';
         player._el.style.width = '100%';
@@ -156,7 +155,7 @@
       }
     });
 
-    player.tag.addEventListener("requestFullScreen", function () {
+    player.tag.addEventListener("x5videoenterfullscreen", function () {
       window.onresize = function () {
         player.tag.setAttribute("x5_type", "h5");
         player.tag.setAttribute("x5_fullscreen", "true");
