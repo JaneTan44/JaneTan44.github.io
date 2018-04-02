@@ -24,8 +24,10 @@ function tipModal(content,id,parentId,type,hasMask) {
   modalBox.id = id;
   modalBox.innerHTML = modalHtml;
   parentDiv.appendChild(modalBox);
+  parentDiv.style.zIndex = '9999';
   setTimeout(function(){
     let tipDiv = document.getElementById(id);
     tipDiv.remove();
+    parentDiv.style.zIndex = '0';
   },2000)
 }
