@@ -150,7 +150,7 @@ body{
 }
 
 .sent_box textarea {
-  min-height: .58rem;
+  height: .58rem;
   padding: .1rem .1rem;
   box-sizing: border-box;
   background: rgba(239, 239, 241, 1);
@@ -164,6 +164,7 @@ body{
   resize: none;
   border-radius: .1rem;
   border: none;
+  overflow:hidden;
 }
 
 .sent_box>span {
