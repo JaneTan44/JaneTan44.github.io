@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播5</title>
+  <title>直播6</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
   <link rel="stylesheet" href="./css/common.css" />
@@ -127,15 +127,18 @@
     controlVideo(player);
     let playBtn = document.getElementsByClassName('prism-big-play-btn')[0];
     playBtn.addEventListener('click',function(){
-      player.tag.requestFullScreen();
-      alert('play');
-      player._el.style.overflow = 'auto';
+      alert('alert')
+      playerData.tag.addEventListener('requestFullScreen',function(){
+        alert('requestFullScreen')
+        player._el.style.overflow = 'auto';
         player._el.width = window.screen.height + 'px';
         player._el.style.height = window.screen.width + 'px';
         player.tag.style.width = '100%';
         player.tag.style.height = '100%';
         player.tag.style.objectFit = 'fill';
         sentBox.style.display = 'none';
+      })
+      alert('play');
     });
   });
 
