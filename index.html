@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播4</title>
+  <title>直播5</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
   <link rel="stylesheet" href="./css/common.css" />
@@ -135,16 +135,16 @@
   let playBtn = document.getElementsByClassName('prism-big-play-btn')[0];
   function controlVideo(player) {
     player.tag.addEventListener("x5videoexitfullscreen", function () {
-      // window.onresize = function () {
-      //   player._el.style.overflow = 'hidden';
-      //   player._el.style.width = '100%';
-      //   player._el.style.height = '5.12rem';
-      //   player.tag.style.width = '100%';
-      //   player.tag.style.height = '5.12rem';
-      //   player.tag.style.objectFit = 'contain';
-      //   sentBox.style.display = 'block';
-      // }
-      player.fullscreenService.cancelFullScreen()
+      window.onresize = function () {
+        player._el.style.overflow = 'hidden';
+        player._el.style.width = '100%';
+        player._el.style.height = '5.12rem';
+        player.tag.style.width = '100%';
+        player.tag.style.height = '5.12rem';
+        player.tag.style.objectFit = 'contain';
+        sentBox.style.display = 'block';
+      }
+      // player.fullscreenService.cancelFullScreen()
     });
     
     playBtn.addEventListener("click", function () {
@@ -194,9 +194,6 @@
     textarea.style.height = textarea.scrollHeight + 'px';
     sentBox.style.position = 'fixed';
     sentBox.style.bottom = '0';
-    playerData.on('cancelFullScreen', function () {
-      alert('cancelFullScreen')
-    })
   }
 
   function sent() {
