@@ -6,10 +6,9 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播</title>
+  <title>直播1</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
-  <script type="text/javascript" src="./js/common.js"></script>
   <link rel="stylesheet" href="./css/common.css" />
   <link rel="stylesheet" href="./css/index.css" />
   <style>
@@ -70,7 +69,6 @@
         <span id="sentBtn">发送</span>
       </div>
     </div>
-    <div id="modalTip"></div>
   </div>
 </body>
 <script>
@@ -128,6 +126,19 @@
     console.log(player)
     playerData = player;
     controlVideo(player);
+    // let playBtn = document.getElementsByClassName('prism-big-play-btn')[0];
+    // playBtn.addEventListener('click',function(){
+    //   playerData.tag.addEventListener('requestFullScreen',function(){
+    //     alert('requestFullScreen')
+    //     player._el.style.overflow = 'auto';
+    //     player._el.width = window.screen.height + 'px';
+    //     player._el.style.height = window.screen.width + 'px';
+    //     player.tag.style.width = '100%';
+    //     player.tag.style.height = '100%';
+    //     player.tag.style.objectFit = 'fill';
+    //     sentBox.style.display = 'none';
+    //   })
+    // });
   });
 
   let sentBox = document.getElementById('sentBox');
@@ -150,7 +161,7 @@
     });
 
   }
-  //全屏
+
   function fullScreen(player,w,h) {
     window.onresize = function () {
       player.tag.setAttribute("x5_type", "h5");
@@ -163,6 +174,7 @@
       player.tag.style.height = '100%';
       player.tag.style.objectFit = 'fill';
       sentBox.style.display = 'none';
+      alert('全屏')
     }
   }
 
@@ -188,7 +200,7 @@
     textarea.style.height = textarea.scrollHeight + 'px';
     sentBox.style.position = 'fixed';
     sentBox.style.bottom = '0';
-    playerData.tag.addEventListener('cancelFullScreen', function () {
+    playerData.on('cancelFullScreen', function () {
       alert('cancelFullScreen')
     })
   }
@@ -197,10 +209,6 @@
     let noData = document.getElementById('noData');
     if (!!noData) chatRoom.removeChild(noData);
     let msg = textarea.value;
-    if(msg.length === 0){
-      tipModal('内容不能为空','fail','modalTip','fail');
-      return;
-    }
     let html =
       `<div class="chat_msg">
         <span>小蜡姬 16:42</span>
@@ -219,6 +227,18 @@
     sentBox.style.height = '.98rem';
     sentBox.style.position = 'absolute';
     sentBox.style.bottom = '0';
+    
+    let playBtn = document.getElementsByClassName('prism-big-play-btn')[0];
+    playBtn.addEventListener('click',function(){
+      alert('playBtn');
+      playerData.on('requestFullScreen',function(){
+        alert('requestFullScreen')
+        fullScreen(playerData,360,640)
+      })
+    });
+    playerData.on('cancelFullScreen', function () {
+      alert('cancelFullScreen')
+    });
   }
 
   function noData() {
