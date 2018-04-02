@@ -75,6 +75,7 @@ body{
 #chatRoom{
     padding: .1rem .3rem .2rem;
     overflow: auto;
+    box-sizing: border-box;
 }
 
 .chat_img>img {
