@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播3</title>
+  <title>直播4</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
   <link rel="stylesheet" href="./css/common.css" />
@@ -177,7 +177,7 @@
       player.tag.style.height = '5.12rem';
       player.tag.style.objectFit = 'contain';
     }
-    textarea.style.height = textarea.scrollHeight + 'px';
+    textarea.style.minHeight = textarea.scrollHeight + 'px';
     sentBox.style.height = 'auto'; 
     sentBox.style.position = 'fixed';
     sentBox.style.bottom = '0';
@@ -201,7 +201,7 @@
     chatRoom.appendChild(newDiv);
     chatRoom.scrollTop = chatRoom.scrollHeight - sentBox.scrollHeight;
     textarea.value = '';
-    textarea.style.height = '.58rem';
+    textarea.style.minHeight = '.58rem';
     sentBox.style.height = '.98rem';
     sentBox.style.position = 'absolute';
     sentBox.style.bottom = '.89rem';
