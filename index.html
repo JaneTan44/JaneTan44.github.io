@@ -182,6 +182,7 @@
   function sent(blurFlag) {
     let msg = textarea.value;
     if (!blurFlag) {
+      textarea.blur()
       let noData = document.getElementById('noData');
       if (!!noData) chatRoom.removeChild(noData);
       if (msg.length === 0) {
