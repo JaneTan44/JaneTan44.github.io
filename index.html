@@ -163,7 +163,9 @@
     chatRoom = document.getElementById('chatRoom'),
     chatWrap = document.getElementById('chatWrap');
   chatRoom.style.height = (chatWrap.clientHeight - sentBox.clientHeight) + 'px'; //聊天内容框动态高度
-  sentBtn.addEventListener('click', sent.bind(false));
+  sentBtn.addEventListener('click', function(){
+    sent(false)
+  });
   textarea.addEventListener('keyup', changeHeight);
   textarea.addEventListener('keydown', changeHeight);
   textarea.addEventListener('focus', changeHeight);
