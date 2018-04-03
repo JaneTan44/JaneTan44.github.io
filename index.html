@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播8</title>
+  <title>直播7</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
   <script type="text/javascript" src="./js/common.js"></script>
@@ -163,7 +163,7 @@
     chatRoom = document.getElementById('chatRoom'),
     chatWrap = document.getElementById('chatWrap');
   chatRoom.style.height = (chatWrap.clientHeight - sentBox.clientHeight) + 'px'; //聊天内容框动态高度
-  sentBtn.addEventListener('click', sent);
+  sentBtn.addEventListener('click', sent.bind(false));
   textarea.addEventListener('keyup', changeHeight);
   textarea.addEventListener('keydown', changeHeight);
   textarea.addEventListener('focus', changeHeight);
@@ -178,10 +178,10 @@
   }
 
   function sent(blurFlag) {
-    if (arguments.length === 0) {
+    let msg = textarea.value;
+    if (!blurFlag) {
       let noData = document.getElementById('noData');
       if (!!noData) chatRoom.removeChild(noData);
-      let msg = textarea.value;
       if (msg.length === 0) {
         tipModal('内容不能为空', 'fail', 'modalTip', 'fail');
         return;
