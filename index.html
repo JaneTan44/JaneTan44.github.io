@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>直播6</title>
+  <title>直播7</title>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
   <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
   <script type="text/javascript" src="./js/common.js"></script>
@@ -167,7 +167,7 @@
   textarea.addEventListener('keyup', changeHeight);
   textarea.addEventListener('keydown', changeHeight);
   textarea.addEventListener('focus', changeHeight);
-  textarea.addEventListener('blur', changeHeight);
+  textarea.addEventListener('blur', inputBlur);
 
   function changeHeight() {
     sentBox.style.height = 'auto';
@@ -177,33 +177,39 @@
     initVideo(playerData)
   }
 
-  function sent() {
-    let noData = document.getElementById('noData');
-    if (!!noData) chatRoom.removeChild(noData);
-    let msg = textarea.value;
-    if (msg.length === 0) {
-      tipModal('内容不能为空', 'fail', 'modalTip', 'fail');
-      return;
-    }
-    let html =
-      `<div class="chat_msg">
+  function sent(blurFlag) {
+    if (!blurFlag) {
+      let noData = document.getElementById('noData');
+      if (!!noData) chatRoom.removeChild(noData);
+      let msg = textarea.value;
+      if (msg.length === 0) {
+        tipModal('内容不能为空', 'fail', 'modalTip', 'fail');
+        return;
+      }
+      let html =
+        `<div class="chat_msg">
         <span>小蜡姬 16:42</span>
         <p>${msg}</p>
       </div>
       <div class="chat_img">
         <img src="http://placeholder.qiniudn.com/60x60/3cc51f/ffffff" alt="">
       </div>`;
-    let newDiv = document.createElement('div');
-    newDiv.className = 'user_chat';
-    newDiv.innerHTML = html;
-    chatRoom.appendChild(newDiv);
-    chatRoom.scrollTop = chatRoom.scrollHeight - sentBox.scrollHeight;
-    textarea.value = '';
+      let newDiv = document.createElement('div');
+      newDiv.className = 'user_chat';
+      newDiv.innerHTML = html;
+      chatRoom.appendChild(newDiv);
+      chatRoom.scrollTop = chatRoom.scrollHeight - sentBox.scrollHeight;
+      textarea.value = '';
+    }
     textarea.style.height = '.58rem';
     sentBox.style.height = '.98rem';
     sentBox.style.position = 'absolute';
     sentBox.style.bottom = '0';
     initVideo(player)
+  }
+
+  function inputBlur() {
+    sent(true)
   }
 
   function noData() {
@@ -221,16 +227,6 @@
     }
   }
   noData()
-  function noNumbers(e)
-{
-    var keynum;
-    // var keychar;
-
-    keynum = window.event ? e.keyCode : e.which;
-    // keychar = String.fromCharCode(keynum);
-    alert(keynum);
-}
-noNumbers(event)
 </script>
 
 </html>
