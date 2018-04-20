@@ -7,24 +7,26 @@
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>直播</title>
-  <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.5.1/skins/default/aliplayer-min.css" />
-  <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.5.1/aliplayer-min.js"></script>
-  <script type="text/javascript" src="./js/common.js"></script>
   <link rel="stylesheet" href="./css/common.css" />
   <link rel="stylesheet" href="./css/index.css" />
-  <style>
-    video {
-      /*object-fit: contain !important;*/
-    }
-  </style>
+  <link rel="stylesheet" href="./css/video-js.css" />
+  <script src="./js/video.js"></script>
+  <script src="./js/videojs-flash.min.js"></script>
+  <script src="./js/zh-CN.js"></script>
   <script>
     (function () {
       document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
     })();
   </script>
+  <style>
+  #video{
+    width: 100%;
+    height: 4.24rem;
+  }
+  </style>
 </head>
 
-<body ontouchstart>
+<body>
   <div class="container">
     <div class="player">
       <div class="player_header">
@@ -32,9 +34,14 @@
         <span>当前
           <b> 8792 </b>人观看直播</span>
       </div>
-      <div class="prism-player" id="J_prismPlayer"></div>
+      <!-- <div class="prism-player" id="J_prismPlayer"></div> -->
+      <div style="width:100%;height:4.24rem;">
+        <video id="video" class="video-js vjs-default-skin vjs-big-play-centered" data-setup="{}" controls>
+          <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="player_footer">
-        <h3>WE2018春夏新品站展览1</h3>
+        <h3>WE2018春夏新品站展览</h3>
         <p>直播嘉宾：
           <span>谢继东老师</span>
         </p>
@@ -43,151 +50,58 @@
         </p>
       </div>
     </div>
-    <div class="chat_room" id="chatWrap">
-      <div id="chatRoom">
-        <div class="chat_box">
-          <div class="chat_img">
-            <img src="http://placeholder.qiniudn.com/60x60/3cc51f/ffffff" alt="">
-          </div>
-          <div class="chat_msg">
-            <span>小蜡姬 16:42</span>
-            <p>由各种物质组成的巨型球状天体</p>
-          </div>
+    <div class="chat_room" id="chatRoom">
+      <div class="chat_box">
+        <div class="chat_img">
+          <img src="http://placeholder.qiniudn.com/60x60/3cc51f/ffffff" alt="">
         </div>
-        <div class="user_chat">
-          <div class="chat_msg">
-            <span>小蜡姬 16:42</span>
-            <p>由各种物质组成的巨型球状天体</p>
-          </div>
-          <div class="chat_img">
-            <img src="http://placeholder.qiniudn.com/60x60/3cc51f/ffffff" alt="">
-          </div>
+        <div class="chat_msg">
+          <span>小蜡姬 16:42</span>
+          <p>由各种物质组成的巨型球状天体</p>
         </div>
       </div>
-      <div class="sent_box" id="sentBox">
-        <textarea autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="说两句捧个场吧，限制30个字" cols="30"
-          maxlength="30" id="msg"></textarea>
-        <span id="sentBtn">发送</span>
-      </div>
+      <!-- <div class="user_chat">
+        <div class="chat_msg">
+          <span>小蜡姬 16:42</span>
+          <p>由各种物质组成的巨型球状天体</p>
+        </div>
+        <div class="chat_img">
+          <img src="http://placeholder.qiniudn.com/60x60/3cc51f/ffffff" alt="">
+        </div>
+      </div> -->
     </div>
-    <div id="modalTip"></div>
+    <div class="sent_box">
+      <textarea autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="说两句捧个场吧，限制30个字" rows="1"
+        cols="30" maxlength="30" id="msg"></textarea>
+      <span id="sentBtn">发送</span>
+    </div>
   </div>
 </body>
 <script>
-  var playerData = null;
-  var player = new Aliplayer({
-    id: "J_prismPlayer",
-    autoplay: false,
-    isLive: true,
-    playsinline: true,
-    width: "100%",
-    height: "5.12rem",
-    controlBarVisibility: "always",
-    useH5Prism: true,
-    useFlashPrism: false,
-    source: "https://player.alicdn.com/video/aliyunmedia.mp4",
-    //cover: "https://cdnoss.youkouyang.com/cover.png",//视频封面图
-    x5_type: 'h5',
-    x5_fullscreen: true, //全屏播放
-    // x5_orientation: 'landscape',
-    skinLayout: [{
-        "name": "bigPlayButton",
-        "align": "cc"
-      },
-      {
-        "name": "controlBar",
-        "align": "blabs",
-        "x": 0,
-        "y": 0,
-        "children": [{
-            "name": "streamButton",
-            "align": "tr",
-            "x": 20,
-            "y": 23
-          },
-          // {
-          //   "name": "fullScreenButton",
-          //   "align": "tr",
-          //   "x": 10,
-          //   "y": 10
-          // }
-        ]
-      },
-      {
-        "name": "fullControlBar",
-        "align": "tlabs",
-        "x": 0,
-        "y": 0,
-        "children": [{
-          "name": "fullZoom",
-          "align": "cc"
-        }]
-      }
-    ]
-  }, function (player) {
-    console.log(player)
-    playerData = player;
-    player.on('ready', function (e) {
-      player.play()
-      controlVideo(player);
-    });
-  });
+  videojs.options.flash.swf = 'video-js.swf';
 
-  let sentBox = document.getElementById('sentBox');
-  let playBtn = document.getElementsByClassName('prism-big-play-btn')[0];
-
-  function controlVideo(player) {
-    player.tag.addEventListener("x5videoexitfullscreen", function () {
-      document.body.classList.remove('fullscreen');
-      initVideo(player)
-    });
-
-    // playBtn.addEventListener("click", function () {
-    //   player.fullscreenService.requestFullScreen();
-    // });
-
-  }
-  //初始化video宽高
-  function initVideo(player) {
-    window.onresize = function () {
-      player._el.style.overflow = 'hidden';
-      player._el.style.width = '100%';
-      player._el.style.height = '5.12rem';
-      player.tag.style.width = '100%';
-      player.tag.style.height = '100%';
-      player.tag.style.objectFit = 'contain';
-      sentBox.style.display = 'block';
-    }
-  }
+  var player = videojs('#video',{
+      techOrder: ["html5","flash"]
+	},function(){
+		console.log(this)
+	});
 
   let textarea = document.getElementById('msg'),
-    sentBtn = document.getElementById('sentBtn'),
-    chatRoom = document.getElementById('chatRoom'),
-    chatWrap = document.getElementById('chatWrap');
-  chatRoom.style.height = (chatWrap.clientHeight - sentBox.clientHeight) + 'px'; //聊天内容框动态高度
-  sentBtn.addEventListener('click', function () {
-    sent()
-  });
+    sentBtn = document.getElementById('sentBtn');
+  sentBtn.addEventListener('click', sent);
   textarea.addEventListener('keyup', changeHeight);
   textarea.addEventListener('keydown', changeHeight);
-  textarea.addEventListener('focus', changeHeight);
 
   function changeHeight() {
-    sentBox.style.height = 'auto';
+    textarea.style.height = 'auto';
     textarea.style.height = textarea.scrollHeight + 'px';
-    sentBox.style.position = 'fixed';
-    sentBox.style.bottom = '0rem';
-    initVideo(playerData)
   }
 
-  function sent(blurFlag) {
-    let msg = textarea.value;
+  function sent() {
+    let chatRoom = document.getElementById('chatRoom');
     let noData = document.getElementById('noData');
-    if (!!noData) chatRoom.removeChild(noData);
-    if (msg.length === 0) {
-      tipModal('内容不能为空', 'fail', 'modalTip', 'fail');
-      return;
-    }
+    if(!!noData) chatRoom.removeChild(noData);
+    let msg = textarea.value;
     let html =
       `<div class="chat_msg">
         <span>小蜡姬 16:42</span>
@@ -200,23 +114,17 @@
     newDiv.className = 'user_chat';
     newDiv.innerHTML = html;
     chatRoom.appendChild(newDiv);
-    chatRoom.scrollTop = chatRoom.scrollHeight - sentBox.scrollHeight;
+    chatRoom.scrollTop = chatRoom.offsetHeight - sentBtn.offsetHeight;
     textarea.value = '';
-    textarea.style.height = '.58rem';
-    sentBox.style.height = '.98rem';
-    sentBox.style.position = 'absolute';
-    sentBox.style.bottom = '0';
-    initVideo(player)
   }
-
 
   function noData() {
     let chatRoom = document.getElementById('chatRoom');
     let list = chatRoom.getElementsByClassName('chat_box');
-    if (list.length === 0) {
+    if(list.length === 0){
       let newDiv = document.createElement('div');
       let html =
-        `<img src="./images/nodata.png" alt="暂无留言">
+      `<img src="./images/nodata.png" alt="暂无留言">
       <p>暂无发言</p>`;
       newDiv.className = 'no_data';
       newDiv.id = 'noData';
