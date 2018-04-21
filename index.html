@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
@@ -11,8 +12,8 @@
   <link rel="stylesheet" href="./css/index.css" />
   <link rel="stylesheet" href="./css/video-js.css" />
   <script src="./js/video.js"></script>
-  <script src="./js/videojs-flash.min.js"></script>
-  <script src="./js/zh-CN.js"></script>
+  <!-- <script src="./js/videojs-flash.min.js"></script>
+  <script src="./js/zh-CN.js"></script> -->
   <script>
     (function () {
       document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
@@ -86,7 +87,8 @@
       },
 	},function(){
 		console.log(this)
-	});
+  });
+  player.play()
 
   let textarea = document.getElementById('msg'),
     sentBtn = document.getElementById('sentBtn');
