@@ -14,9 +14,6 @@
   <script src="./js/videojs-flash.min.js"></script>
   <script src="./js/zh-CN.js"></script>
   <script>
-    videojs.options.flash.swf = 'video-js.swf';
-  </script>
-  <script>
     (function () {
       document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
     })();
@@ -83,7 +80,10 @@
 <script>
 
   var player = videojs('#video',{
-      techOrder: ["html5","flash"]
+      techOrder: ["html5","flash"],
+      flash: {
+        swf: 'video-js.swf'
+      },
 	},function(){
 		console.log(this)
 	});
