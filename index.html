@@ -2,34 +2,27 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Access-Control-Allow-Origin" content="*">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>直播</title>
+  <script type="text/javascript" src="./js/ckplayer.js"></script>
   <link rel="stylesheet" href="./css/common.css" />
   <link rel="stylesheet" href="./css/index.css" />
-  <!-- <link rel="stylesheet" href="./css/video-js.css" />
-  <script src="./js/video.js"></script> -->
-  
-  <script type="text/javascript" src="./js/ckplayer.js"></script>
-  <!-- <script src="./js/videojs-flash.min.js"></script>
-  <script src="./js/zh-CN.js"></script> -->
+  <style>
+    video {
+      /*object-fit: contain !important;*/
+    }
+  </style>
   <script>
     (function () {
       document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
     })();
   </script>
-  <style>
-  #video{
-    width: 100%;
-    height: 4.24rem;
-  }
-  </style>
 </head>
 
-<body>
+<body ontouchstart>
   <div class="container">
     <div class="player">
       <div class="player_header">
@@ -37,27 +30,9 @@
         <span>当前
           <b> 8792 </b>人观看直播</span>
       </div>
-      <!-- <div class="prism-player" id="J_prismPlayer"></div> -->
-      <div class="video" style="width:100%;height:4.24rem;"></div>
-        <!-- <video id="video" class="video-js vjs-default-skin vjs-big-play-centered" data-setup="{}" controls>
-          <source src="http://meeting.jinlanyun.com/meeting/f1.m3u8?auth_key=1524233392-0-9999-0ed3565328968699761f7aeb61080b89" type="video/mp4"/>   
-        </video> -->
-        <!-- <video id="video" class="video-js vjs-default-skin vjs-big-play-centered" data-setup="{}" controls>
-          <source src="rtmp://meeting.jinlanyun.com/meeting/f1_lsd?auth_key=1524236051-0-9999-22b9005089366c45e5c592391813e8a1" type="video/rtmp"/>   
-        </video> -->
-        <script type="text/javascript">
-          var videoObject = {
-            container: '.video',//“#”代表容器的ID，“.”或“”代表容器的class
-            variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
-            autoplay:true,//自动播放
-            live:true,//直播视频形式
-            video:'rtmp://meeting.jinlanyun.com/meeting/f1_lsd?auth_key=1524468528-0-9999-7837b55287d9034f752cc69e929c6cdd'//视频地址
-          };
-          var player=new ckplayer(videoObject);
-        </script>
-      <!-- </div> -->
+      <div id="video" style="width: 100%; height: 4.24rem;"></div>
       <div class="player_footer">
-        <h3>WE2018春夏新品站展览</h3>
+        <h3>WE2018春夏新品站展览1</h3>
         <p>直播嘉宾：
           <span>谢继东老师</span>
         </p>
@@ -66,46 +41,50 @@
         </p>
       </div>
     </div>
-    <div class="chat_room" id="chatRoom">
-      <div class="chat_box">
-        <div class="chat_img">
-          <!-- <img src="http://placeholder.qiniudn.com/60x60/3cc51f/ffffff" alt=""> -->
+    <div class="chat_room">
+      <div id="chatRoom">
+        <div class="chat_box">
+          <div class="chat_img">
+            <img src="http://placeholder.qiniudn.com/60x60/3cc51f/ffffff" alt="">
+          </div>
+          <div class="chat_msg">
+            <span>小蜡姬 16:42</span>
+            <p>由各种物质组成的巨型球状天体</p>
+          </div>
         </div>
-        <div class="chat_msg">
-          <span>小蜡姬 16:42</span>
-          <p>由各种物质组成的巨型球状天体</p>
+        <div class="user_chat">
+          <div class="chat_msg">
+            <span>小蜡姬 16:42</span>
+            <p>由各种物质组成的巨型球状天体</p>
+          </div>
+          <div class="chat_img">
+            <img src="http://placeholder.qiniudn.com/60x60/3cc51f/ffffff" alt="">
+          </div>
         </div>
       </div>
-      <!-- <div class="user_chat">
-        <div class="chat_msg">
-          <span>小蜡姬 16:42</span>
-          <p>由各种物质组成的巨型球状天体</p>
-        </div>
-        <div class="chat_img">
-          <img src="http://placeholder.qiniudn.com/60x60/3cc51f/ffffff" alt="">
-        </div>
-      </div> -->
-    </div>
-    <div class="sent_box">
-      <textarea autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="说两句捧个场吧，限制30个字" rows="1"
-        cols="30" maxlength="30" id="msg"></textarea>
-      <span id="sentBtn">发送</span>
+      <div class="sent_box" id="sentBox">
+        <textarea autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="说两句捧个场吧，限制30个字" rows="1"
+          cols="30" maxlength="30" id="msg"></textarea>
+        <span id="sentBtn">发送</span>
+      </div>
     </div>
   </div>
 </body>
 <script>
+  var videoObject = {
+		container: '#video',//“#”代表容器的ID，“.”或“”代表容器的class
+		variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
+		autoplay:false,//自动播放
+    poster: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',//封面
+		live:true,
+		video:'http://live.hkstv.hk.lxdns.com/live/hks/playlist.m3u8'//视频地址
+	};
+	var player=new ckplayer(videoObject);
 
-  // var player = videojs('#video',{
-  //     techOrder: ["html5","flash"],
-  //     flash: {
-  //       swf: 'video-js.swf'
-  //     },
-	// },function(){
-	// 	console.log(this)
-  // });
-
+  let sentBox = document.getElementById('sentBox');
   let textarea = document.getElementById('msg'),
     sentBtn = document.getElementById('sentBtn');
+  //   sentBox.style.top = (window.screen.height - sentBox.clientHeight)+'px';
   sentBtn.addEventListener('click', sent);
   textarea.addEventListener('keyup', changeHeight);
   textarea.addEventListener('keydown', changeHeight);
@@ -118,7 +97,8 @@
   function sent() {
     let chatRoom = document.getElementById('chatRoom');
     let noData = document.getElementById('noData');
-    if(!!noData) chatRoom.removeChild(noData);
+
+    if (!!noData) chatRoom.removeChild(noData);
     let msg = textarea.value;
     let html =
       `<div class="chat_msg">
@@ -132,17 +112,19 @@
     newDiv.className = 'user_chat';
     newDiv.innerHTML = html;
     chatRoom.appendChild(newDiv);
-    chatRoom.scrollTop = chatRoom.offsetHeight - sentBtn.offsetHeight;
+    chatRoom.scrollTop = chatRoom.scrollHeight - sentBox.scrollHeight;
     textarea.value = '';
+    textarea.style.height = '.58rem';
+    sentBox.style.minHeight = textarea.scrollHeight + 'px';
   }
 
   function noData() {
     let chatRoom = document.getElementById('chatRoom');
     let list = chatRoom.getElementsByClassName('chat_box');
-    if(list.length === 0){
+    if (list.length === 0) {
       let newDiv = document.createElement('div');
       let html =
-      `<img src="./images/nodata.png" alt="暂无留言">
+        `<img src="./images/nodata.png" alt="暂无留言">
       <p>暂无发言</p>`;
       newDiv.className = 'no_data';
       newDiv.id = 'noData';
