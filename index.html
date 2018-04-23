@@ -10,8 +10,10 @@
   <title>2直播</title>
   <link rel="stylesheet" href="./css/common.css" />
   <link rel="stylesheet" href="./css/index.css" />
-  <link rel="stylesheet" href="./css/video-js.css" />
-  <script src="./js/video.js"></script>
+  <!-- <link rel="stylesheet" href="./css/video-js.css" />
+  <script src="./js/video.js"></script> -->
+  
+  <script type="text/javascript" src="./js/ckplayer.js"></script>
   <!-- <script src="./js/videojs-flash.min.js"></script>
   <script src="./js/zh-CN.js"></script> -->
   <script>
@@ -36,14 +38,24 @@
           <b> 8792 </b>人观看直播</span>
       </div>
       <!-- <div class="prism-player" id="J_prismPlayer"></div> -->
-      <div style="width:100%;height:4.24rem;">
+      <div class="video" style="width:100%;height:4.24rem;"></div>
         <!-- <video id="video" class="video-js vjs-default-skin vjs-big-play-centered" data-setup="{}" controls>
           <source src="http://meeting.jinlanyun.com/meeting/f1.m3u8?auth_key=1524233392-0-9999-0ed3565328968699761f7aeb61080b89" type="video/mp4"/>   
         </video> -->
-        <video id="video" class="video-js vjs-default-skin vjs-big-play-centered" data-setup="{}" controls>
+        <!-- <video id="video" class="video-js vjs-default-skin vjs-big-play-centered" data-setup="{}" controls>
           <source src="rtmp://meeting.jinlanyun.com/meeting/f1_lsd?auth_key=1524236051-0-9999-22b9005089366c45e5c592391813e8a1" type="video/rtmp"/>   
-        </video>
-      </div>
+        </video> -->
+        <script type="text/javascript">
+          var videoObject = {
+            container: '.video',//“#”代表容器的ID，“.”或“”代表容器的class
+            variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
+            autoplay:true,//自动播放
+            live:true,//直播视频形式
+            video:'rtmp://meeting.jinlanyun.com/meeting/f1_lsd?auth_key=1524468528-0-9999-7837b55287d9034f752cc69e929c6cdd'//视频地址
+          };
+          var player=new ckplayer(videoObject);
+        </script>
+      <!-- </div> -->
       <div class="player_footer">
         <h3>WE2018春夏新品站展览</h3>
         <p>直播嘉宾：
@@ -83,14 +95,14 @@
 </body>
 <script>
 
-  var player = videojs('#video',{
-      techOrder: ["html5","flash"],
-      flash: {
-        swf: 'video-js.swf'
-      },
-	},function(){
-		console.log(this)
-  });
+  // var player = videojs('#video',{
+  //     techOrder: ["html5","flash"],
+  //     flash: {
+  //       swf: 'video-js.swf'
+  //     },
+	// },function(){
+	// 	console.log(this)
+  // });
 
   let textarea = document.getElementById('msg'),
     sentBtn = document.getElementById('sentBtn');
