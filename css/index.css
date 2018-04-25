@@ -58,8 +58,8 @@
 
 .chat_room {
   box-sizing: border-box;
-  min-height: calc(100% - .98rem - 2.1rem - 3.8rem - .88rem);
-  max-height: calc(100% - .98rem - 2.1rem - 3.8rem - .88rem);
+  min-height: calc(100% - .98rem - 2.1rem - 4.24rem - .88rem);
+  max-height: calc(100% - .98rem - 2.1rem - 4.24rem - .88rem);
   overflow: auto;
   background-color: #1a1c26;
   padding: .1rem .3rem;
