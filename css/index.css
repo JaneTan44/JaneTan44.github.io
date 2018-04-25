@@ -27,7 +27,7 @@
   height: .54rem;
   line-height: .54rem;
   float: right;
-  font-size: .26rem;
+  font-size: .28rem;
   color: #fff;
 }
 
@@ -51,7 +51,7 @@
 }
 
 .player_footer>p {
-  font-size: .26rem;
+  font-size: .28rem;
   color: #DDDDDD;
   line-height: 1.8;
 }
@@ -146,7 +146,7 @@
   box-sizing: border-box;
   background: rgba(239, 239, 241, 1);
   font-family: HiraginoSansGB-W3;
-  font-size: .24rem;
+  font-size: .28rem;
   color: rgba(153, 153, 153, 1);
   width: 6.02rem;
   display: inline-block;
