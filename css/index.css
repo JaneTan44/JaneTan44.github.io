@@ -109,7 +109,7 @@
 
 .chat_msg>span {
   display: block;
-  font-size: .26rem;
+  font-size: .28rem;
   color: rgba(102, 102, 102, 1);
   margin: .1rem 0;
 }
@@ -122,7 +122,7 @@
   display: inline-block;
   line-height: 1.2;
   font-size: .28rem;
-  width: 4.6rem;
+  max-width: 4.6rem;
 }
 .user_chat>.chat_msg>p{
   text-align: left; 
