@@ -69,6 +69,7 @@
   padding: .1rem .3rem .2rem;
   overflow: auto;
   box-sizing: border-box;
+  height: 100%;
 }
 
 .chat_img>img {
