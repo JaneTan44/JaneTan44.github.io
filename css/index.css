@@ -122,6 +122,10 @@
   display: inline-block;
   line-height: 1.2;
   font-size: .26rem;
+  width: 4.6rem;
+}
+.user_chat>.chat_msg>p{
+  text-align: left; 
 }
 
 .sent_box {
@@ -155,8 +159,8 @@
 
 .sent_box>span {
   color: RGBA(61, 202, 137, 1);
-  font-size: .28rem;
-  margin-left: .18rem;
+  font-size: .3rem;
+  margin-left: .16rem;
 }
 
 .no_data {
