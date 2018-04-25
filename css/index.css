@@ -58,7 +58,7 @@
 
 .chat_room {
   box-sizing: border-box;
-  min-height: calc(100% - .98rem - 2.1rem - 4.24rem - .88rem);
+  /* min-height: calc(100% - .98rem - 2.1rem - 4.24rem - .88rem); */
   height: calc(100% - .98rem - 2.1rem - 4.24rem - .88rem);
   overflow-y: auto;
   overflow-x: hidden;
