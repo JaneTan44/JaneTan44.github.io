@@ -117,7 +117,7 @@
     newDiv.className = 'user_chat';
     newDiv.innerHTML = html;
     chatRoom.appendChild(newDiv);
-    chatRoom.scrollTop = (chatRoom.scrollHeight - sentBox.scrollHeight) + 'px';
+    chatRoom.scrollTop = chatRoom.scrollHeight - sentBox.scrollHeight;
     textarea.value = '';
     textarea.style.height = '.58rem';
     sentBox.style.minHeight = textarea.scrollHeight + 'px';
