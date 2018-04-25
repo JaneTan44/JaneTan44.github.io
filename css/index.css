@@ -89,6 +89,7 @@
 }
 
 .chat_msg {
+  display: inline-block;
   margin-left: .24rem;
   margin-bottom: .1rem;
 }
