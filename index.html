@@ -78,11 +78,12 @@
     html5player: './js/jwplayer.html5.js',
 		width: "100%", //播放器宽
     height: '4.24rem',
+    stretching: 'exactfit',
 		controlbar: "over", //控制条位置
 		screencolor: "#000", //播放器颜色
 		repeat: false, //重复播放
-		autostart: false, //自动播放		
-    stretching: 'exactfit',
+		autostart: true, //自动播放		
+    
     showvolume: true
 	}
   jwplayer("video").setup(defaultOptions);
