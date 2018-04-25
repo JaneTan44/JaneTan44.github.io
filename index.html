@@ -7,7 +7,8 @@
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>直播</title>
-  <script type="text/javascript" src="./js/ckplayer.js"></script>
+  <script type="text/javascript" src="./js/jwplayer.js"></script>
+	<script type="text/javascript" src="./js/jwpsrv.js"></script>
   <link rel="stylesheet" href="./css/common.css" />
   <link rel="stylesheet" href="./css/index.css" />
   <style>
@@ -71,15 +72,17 @@
   </div>
 </body>
 <script>
-  var videoObject = {
-		container: '#video',//“#”代表容器的ID，“.”或“”代表容器的class
-		variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
-		autoplay:false,//自动播放
-    poster: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',//封面
-		live:true,
-		video:'http://live.hkstv.hk.lxdns.com/live/hks/playlist.m3u8'//视频地址
-	};
-	var player=new ckplayer(videoObject);
+  var defaultOptions = {
+    file: 'https://player.alicdn.com/video/aliyunmedia.mp4',
+		flashplayer: "./js/jwplayer.flash.swf", //调用播放器
+    html5player: './js/jwplayer.html5.js',
+		width: "100%", //播放器宽
+		controlbar: "over", //控制条位置
+		screencolor: "#000", //播放器颜色
+		repeat: false, //重复播放
+		autostart: false //自动播放		
+	}
+  jwplayer("video").setup(defaultOptions);
 
   let sentBox = document.getElementById('sentBox');
   let textarea = document.getElementById('msg'),
