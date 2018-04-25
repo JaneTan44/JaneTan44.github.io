@@ -90,7 +90,6 @@
   let sentBox = document.getElementById('sentBox');
   let textarea = document.getElementById('msg'),
     sentBtn = document.getElementById('sentBtn');
-  //   sentBox.style.top = (window.screen.height - sentBox.clientHeight)+'px';
   sentBtn.addEventListener('click', sent);
   textarea.addEventListener('keyup', changeHeight);
   textarea.addEventListener('keydown', changeHeight);
@@ -118,7 +117,7 @@
     newDiv.className = 'user_chat';
     newDiv.innerHTML = html;
     chatRoom.appendChild(newDiv);
-    chatRoom.scrollTop = chatRoom.scrollHeight - sentBox.scrollHeight;
+    chatRoom.scrollTop = (chatRoom.scrollHeight - sentBox.scrollHeight) + 'px';
     textarea.value = '';
     textarea.style.height = '.58rem';
     sentBox.style.minHeight = textarea.scrollHeight + 'px';
