@@ -77,10 +77,12 @@
 		flashplayer: "./js/jwplayer.flash.swf", //调用播放器
     html5player: './js/jwplayer.html5.js',
 		width: "100%", //播放器宽
+		height: "100%",
 		controlbar: "over", //控制条位置
 		screencolor: "#000", //播放器颜色
 		repeat: false, //重复播放
-		autostart: false //自动播放		
+		autostart: false, //自动播放		
+    stretching:'exactfit'
 	}
   jwplayer("video").setup(defaultOptions);
 
