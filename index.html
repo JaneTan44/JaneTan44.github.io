@@ -77,23 +77,25 @@
 <script type="text/javascript" src="js/cyberplayer.js"></script>
 <script>
   var player = cyberplayer("playercontainer").setup({
-      flashplayer: 'js/cyberplayer.flash.swf',
-      file: "https://player.alicdn.com/video/aliyunmedia.mp4", // <—rtmp or flv直播地址
-      fallbackfile: "http://cyberplayerplay.kaywang.cn/cyberplayer/demo201711-L1.m3u8", // <— 备用播放地址，为了手机上能进行直播，设置hls直播流
-      autostart: false,
-      stretching: "exactfit",
-      volume: 100,
-      controls: true,
-      image: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',//封面图
-      ak: "f614751d7c9a47b6be9f70709b6a9bb0" // 公有云平台注册即可获得accessKey
+    flashplayer: 'js/cyberplayer.flash.swf',
+    file: "https://player.alicdn.com/video/aliyunmedia.mp4", // <—rtmp or flv直播地址
+    fallbackfile: "http://cyberplayerplay.kaywang.cn/cyberplayer/demo201711-L1.m3u8", // <— 备用播放地址，为了手机上能进行直播，设置hls直播流
+    autostart: false,
+    stretching: "exactfit",
+    volume: 100,
+    controls: true,
+    image: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff', //封面图
+    ak: "f614751d7c9a47b6be9f70709b6a9bb0" // 公有云平台注册即可获得accessKey
   });
-  var initWidth,initHeight;
-  player.onResize(function(event){ 
+  var initWidth, initHeight;
+  player.onResize(function (event) {
     initWidth = event.width;
     initHeight = event.height;
   });
-  var fullscreen = player.getFullscreen();
-  if(fullscreen === true) player.resize(initWidth, initHeight)
+  player.resize(initWidth, initHeight)
+  myPlayer.onFullscreen(function(event){ 
+      console.log(event);
+  });
 
   let sentBox = document.getElementById('sentBox');
   let textarea = document.getElementById('msg'),
@@ -114,9 +116,9 @@
     if (!!noData) chatRoom.removeChild(noData);
     if (msg.length === 0) {
       document.getElementById('modalTip').style.display = 'block';
-      tipModal('内容不能为空', 'fail', 'modalTip', 'fail');    
+      tipModal('内容不能为空', 'fail', 'modalTip', 'fail');
       return;
-    }else{
+    } else {
       document.getElementById('modalTip').style.display = 'none';
     }
     let html =
