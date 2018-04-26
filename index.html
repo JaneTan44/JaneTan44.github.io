@@ -92,9 +92,8 @@
     initWidth = event.width;
     initHeight = event.height;
   });
-  player.resize(initWidth, initHeight)
   player.onFullscreen(function(event){ 
-      console.log(event);
+     if(event.fullscreen === !1) player.resize(initWidth, initHeight)
   });
 
   let sentBox = document.getElementById('sentBox');
