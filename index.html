@@ -87,9 +87,13 @@
       image: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',//封面图
       ak: "f614751d7c9a47b6be9f70709b6a9bb0" // 公有云平台注册即可获得accessKey
   });
-    player.onResize(function(event){ 
-      console.log(event);
+  var initWidth,initHeight;
+  player.onResize(function(event){ 
+    initWidth = event.width;
+    initHeight = event.height;
   });
+  var fullscreen = player.getFullscreen();
+  if(fullscreen === true) player.resize(initWidth, initHeight)
 
   let sentBox = document.getElementById('sentBox');
   let textarea = document.getElementById('msg'),
