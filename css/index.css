@@ -10,9 +10,12 @@
 
 .player_header {
   height: .88rem;
-  background: #2B2F3F;
+  background: transparent;
   padding: .2rem .29rem .14rem .31rem;
   box-sizing: border-box;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
 }
 
 .player_header>img {
@@ -55,21 +58,19 @@
   color: #DDDDDD;
   line-height: 1.8;
 }
-
 .chat_room {
   box-sizing: border-box;
   /* min-height: calc(100% - .98rem - 2.1rem - 4.24rem - .88rem); */
-  height: calc(100% - .98rem - 2.1rem - 4.24rem - .88rem);
-  overflow: auto;
+  height: calc(100% - 2.1rem - 4.24rem);
   background-color: #1a1c26;
   padding: .1rem .3rem;
   position: relative;
 }
 #chatRoom{
-  padding: .1rem .3rem .2rem;
+  padding: .1rem 0 .2rem;
   overflow: auto;
   box-sizing: border-box;
-  height: 100%;
+  height: calc(100% - .98rem - 1.2rem);
 }
 
 .chat_img>img {
@@ -141,8 +142,8 @@
 }
 
 .sent_box textarea {
-  min-height: .58rem;
-  padding: .1rem .1rem;
+  min-height: .78rem;
+  padding: .2rem .1rem;
   box-sizing: border-box;
   background: rgba(239, 239, 241, 1);
   font-family: HiraginoSansGB-W3;
@@ -180,4 +181,17 @@
   font-size: .32rem;
   font-family: HiraginoSansGB-W3;
   color: rgba(102, 102, 102, 1);
+}
+#modalTip{
+  display: none;
+}
+/* 重置player样式 */
+.jwplayer{
+  width: 100% !important;
+}
+.jw-skin-bce .jw-controlbar{
+  height: auto !important;
+}
+.jw-icon-inline.jw-icon-barlogo-new{
+  display: none;
 }

@@ -26,6 +26,8 @@ function tipModal(content,id,parentId,type,hasMask) {
   parentDiv.appendChild(modalBox);
   setTimeout(function(){
     let tipDiv = document.getElementById(id);
-    tipDiv.remove();
+    tipDiv.remove();    
+    parentDiv.style.display = 'none';
   },2000)
+
 }
