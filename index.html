@@ -1,35 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script type="text/javascript" src="player/videojs/video.min.js"></script>
-    <script type="text/javascript" src="player/videojs/videojs-contrib-hls.min.js"></script>
-    <script type="text/javascript" src="player/videojs/videojs-contrib-quality-levels.min.js"></script>
-    <script>
-        (function () {
-          document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
-        })();
-      </script>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="video-js.css">
+	<script src="video.js"></script>
+	<style>
+		.user-name {
+			display: none;
+			position: absolute;
+			top: 5px;
+			right: 10px;
+			z-index: 10;
+			min-width: 150px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			color: red;
+			border: 1px solid red;
+		}
+		#example_video_1 {
+			width: 100%;
+			height: 500px;
+		}
+	</style>
 </head>
 <body>
-    <div id="playercontainer"></div>
-    <script type="text/javascript" src="player/cyberplayer.js"></script>
-    <script type="text/javascript">
-        var player = cyberplayer("playercontainer").setup({
-            width: '100%',
-            height: '300px',
-            flashplayer: 'player/cyberplayer.flash.swf',
-            file: "https://player.alicdn.com/video/aliyunmedia.mp4", // <—rtmp or flv直播地址
-            fallbackfile: "http://cyberplayerplay.kaywang.cn/cyberplayer/demo201711-L1.m3u8", // <— 备用播放地址，为了手机上能进行直播，设置hls直播流
-            autostart: true,
-            stretching: "exactfit",
-            volume: 100,
-            controls: true,
-            ak: "f614751d7c9a47b6be9f70709b6a9bb0" // 公有云平台注册即可获得accessKey
-        });
-    </script>
+ 
+	<video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264" data-setup="{}">
+    	<source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+  	</video>
+ 
+
+	<script>
+	//传入视频ID,适用于页面上只有一个播放器的情况
+	//teachOrder 采用哪种播放方式，默认采用html5的video标签播放，苹果不支持flash
+	//mydata 是要传给播放器上显示的用户名
+	var player = videojs('#example_video_1',{
+	    techOrder: ["html5","flash"],
+	    mydata: {
+		    username: 'xiaoming'
+		},
+	   	controlBar: {
+			//fullscreenToggle:false,
+			volumeMenuButton:false
+		}
+	},function(){
+		//这里是播放器初始化之后放置要显示的内容
+		//更高级的应用可以创建一个组件(component)
+		// var textNode = document.createElement('div');
+		// textNode.className = 'user-name';
+		// //textNode.innerHTML = this.options().mydata.username||'';
+		// this.el().appendChild(textNode);
+		// this.userName = textNode;
+		// console.log(this)
+		//this.play()
+	});
+
+	//var volumeMenuButton  = player.controlBar.getChild('volumeMenuButton').el();
+	//volumeMenuButton.style.display='none'
+ 
+	</script>
 </body>
 </html>
