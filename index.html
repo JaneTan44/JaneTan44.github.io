@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
   />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>ç›´æ’­</title>
+  <title>Ö±²¥</title>
   <script type="text/javascript" src="js/videojs/video.min.js"></script>
   <script type="text/javascript" src="js/videojs/videojs-contrib-hls.min.js"></script>
   <script type="text/javascript" src="js/videojs/videojs-contrib-quality-levels.min.js"></script>
@@ -29,17 +29,17 @@
   <div class="container">
     <div class="player">
       <div class="player_header">
-        <img src="./images/logo.png" alt="ç›´æ’­logo">
-        <span>å½“å‰
-          <b> 8792 </b>äººè§‚çœ‹ç›´æ’­</span>
+        <img src="./images/logo.png" alt="Ö±²¥logo">
+        <span>µ±Ç°
+          <b> 8792 </b>ÈË¹Û¿´Ö±²¥</span>
       </div>
       <div id="playercontainer" style="height: 4.24rem;"></div>
       <div class="player_footer">
-        <h3>WE2018æ˜¥å¤æ–°å“ç«™å±•è§ˆ1</h3>
-        <p>ç›´æ’­å˜‰å®¾ï¼š
-          <span>è°¢ç»§ä¸œè€å¸ˆ</span>
+        <h3>WE2018´ºÏÄĞÂÆ·Õ¾Õ¹ÀÀ1</h3>
+        <p>Ö±²¥¼Î±ö£º
+          <span>Ğ»¼Ì¶«ÀÏÊ¦</span>
         </p>
-        <p>ç›´æ’­æ—¶é—´ï¼š
+        <p>Ö±²¥Ê±¼ä£º
           <span>2018.03.16 9:00 - 12:00</span>
         </p>
       </div>
@@ -51,14 +51,14 @@
             <img src="http://placeholder.qiniudn.com/60x60/3cc51f/ffffff" alt="">
           </div>
           <div class="chat_msg">
-            <span>å°èœ¡å§¬ 16:42</span>
-            <p>ç”±å„ç§ç‰©è´¨ç»„æˆçš„å·¨å‹çƒçŠ¶å¤©ä½“</p>
+            <span>Ğ¡À¯¼§ 16:42</span>
+            <p>ÓÉ¸÷ÖÖÎïÖÊ×é³ÉµÄ¾ŞĞÍÇò×´ÌìÌå</p>
           </div>
         </div>
         <div class="user_chat">
           <div class="chat_msg">
-            <span>å°èœ¡å§¬ 16:42</span>
-            <p>ç”±å„ç§ç‰©è´¨ç»„æˆçš„å·¨å‹çƒçŠ¶å¤©ä½“</p>
+            <span>Ğ¡À¯¼§ 16:42</span>
+            <p>ÓÉ¸÷ÖÖÎïÖÊ×é³ÉµÄ¾ŞĞÍÇò×´ÌìÌå</p>
           </div>
           <div class="chat_img">
             <img src="http://placeholder.qiniudn.com/60x60/3cc51f/ffffff" alt="">
@@ -66,9 +66,9 @@
         </div>
       </div>
       <div class="sent_box" id="sentBox">
-        <textarea autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="è¯´ä¸¤å¥æ§ä¸ªåœºå§ï¼Œé™åˆ¶30ä¸ªå­—" rows="1"
+        <textarea autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="ËµÁ½¾äÅõ¸ö³¡°É£¬ÏŞÖÆ30¸ö×Ö" rows="1"
           cols="30" maxlength="30" id="msg"></textarea>
-        <span id="sentBtn">å‘é€</span>
+        <span id="sentBtn">·¢ËÍ</span>
       </div>
     </div>
     <div id="modalTip"></div>
@@ -78,14 +78,14 @@
 <script>
   var player = cyberplayer("playercontainer").setup({
     flashplayer: 'js/cyberplayer.flash.swf',
-    file: "https://player.alicdn.com/video/aliyunmedia.mp4", // <â€”rtmp or flvç›´æ’­åœ°å€
-    fallbackfile: "http://cyberplayerplay.kaywang.cn/cyberplayer/demo201711-L1.m3u8", // <â€” å¤‡ç”¨æ’­æ”¾åœ°å€ï¼Œä¸ºäº†æ‰‹æœºä¸Šèƒ½è¿›è¡Œç›´æ’­ï¼Œè®¾ç½®hlsç›´æ’­æµ
+    file: "https://player.alicdn.com/video/aliyunmedia.mp4", // <¡ªrtmp or flvÖ±²¥µØÖ·
+    fallbackfile: "http://cyberplayerplay.kaywang.cn/cyberplayer/demo201711-L1.m3u8", // <¡ª ±¸ÓÃ²¥·ÅµØÖ·£¬ÎªÁËÊÖ»úÉÏÄÜ½øĞĞÖ±²¥£¬ÉèÖÃhlsÖ±²¥Á÷
     autostart: false,
     stretching: "exactfit",
     volume: 100,
     controls: true,
-    image: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff', //å°é¢å›¾
-    ak: "f614751d7c9a47b6be9f70709b6a9bb0" // å…¬æœ‰äº‘å¹³å°æ³¨å†Œå³å¯è·å¾—accessKey
+    image: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff', //·âÃæÍ¼
+    ak: "f614751d7c9a47b6be9f70709b6a9bb0" // ¹«ÓĞÔÆÆ½Ì¨×¢²á¼´¿É»ñµÃaccessKey
   });
   var initWidth, initHeight;
   player.onResize(function (event) {
@@ -115,14 +115,14 @@
     if (!!noData) chatRoom.removeChild(noData);
     if (msg.length === 0) {
       document.getElementById('modalTip').style.display = 'block';
-      tipModal('å†…å®¹ä¸èƒ½ä¸ºç©º', 'fail', 'modalTip', 'fail');
+      tipModal('ÄÚÈİ²»ÄÜÎª¿Õ', 'fail', 'modalTip', 'fail');
       return;
     } else {
       document.getElementById('modalTip').style.display = 'none';
     }
     let html =
       `<div class="chat_msg">
-        <span>å°èœ¡å§¬ 16:42</span>
+        <span>Ğ¡À¯¼§ 16:42</span>
         <p>${msg}</p>
       </div>
       <div class="chat_img">
@@ -144,8 +144,8 @@
     if (list.length === 0) {
       let newDiv = document.createElement('div');
       let html =
-        `<img src="./images/nodata.png" alt="æš‚æ— ç•™è¨€">
-      <p>æš‚æ— å‘è¨€</p>`;
+        `<img src="./images/nodata.png" alt="ÔİÎŞÁôÑÔ">
+      <p>ÔİÎŞ·¢ÑÔ</p>`;
       newDiv.className = 'no_data';
       newDiv.id = 'noData';
       newDiv.innerHTML = html;
@@ -155,4 +155,4 @@
   noData()
 </script>
 
-</html>
+</html><!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,height=device-height,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"><link rel=stylesheet href=//g.alicdn.com/de/prismplayer/2.7.1/skins/default/aliplayer-min.css><script type=text/javascript src=//g.alicdn.com/de/prismplayer/2.7.1/aliplayer-min.js></script><title></title><link rel="bookmark" type="image/x-icon" href="/static/images/favicon.ico" /><link href=http://cdn.52xuewen.com/static/wap/v1.0.3/css/base-16IMg.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=http://cdn.52xuewen.com/static/wap/v1.0.3/js/main-26da.js></script><script type=text/javascript src=http://cdn.52xuewen.com/static/wap/v1.0.3/js/home-e211.js></script><script type=text/javascript src=http://cdn.52xuewen.com/static/wap/v1.0.3/js/base-f2e6.js></script></body></html>
