@@ -1,1 +1,61 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>土石方司机端</title><script type=text/javascript src="//api.map.baidu.com/api?v=2.0&ak=x7qYkKkVwoIqUNOAeUhTcsaf208OdOyI"></script><link href=/static/css/app.83e1dafda74146c98abf54c852f583e4.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/static/js/manifest.57a5d9baa49ba8cc71fa.js></script><script type=text/javascript src=/static/js/vendor.759517f43a001fca4c9c.js></script><script type=text/javascript src=/static/js/app.0877b5e6e86c44d38044.js></script></body></html>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <style type="text/css">
+    body,
+    html,
+    #allmap {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      margin: 0;
+      font-family: "微软雅黑";
+    }
+  </style>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=x7qYkKkVwoIqUNOAeUhTcsaf208OdOyI"></script>
+  <title>地图展示</title>
+</head>
+
+<body>
+  <div id="allmap"></div>
+</body>
+
+</html>
+<script type="text/javascript">
+  var map = new BMap.Map('allmap')
+  var geolocation = new BMap.Geolocation()
+  geolocation.getCurrentPosition(function (r) {
+    console.log(r)
+    let lat = r.latitude
+    let lng = r.longitude
+    const pointBak = new BMap.Point(lng, lat)
+    map.centerAndZoom(pointBak, 15)
+    /* eslint-disable */
+    if (this.getStatus() === BMAP_STATUS_SUCCESS) {
+      setTimeout(function () {
+        var convertor = new BMap.Convertor()
+        var pointArr = []
+        pointArr.push(pointBak);
+        var mk = new BMap.Marker(pointBak)
+        map.addOverlay(mk)
+        // convertor.translate(pointArr, 1, 5, function (data) {
+        //   var mk = new BMap.Marker(data.points[0])
+        //   map.addOverlay(mk)
+        //   map.panTo(data.points[0])
+        //   map.setCenter(data.points[0])
+        //   const geo = new BMap.Geocoder()
+        //   geo.getLocation(data.points[0], (res) => {
+        //     // that.surroundingPois = res.surroundingPois
+        //   })
+        // })
+      }, 1000)
+      // console.log('您的位置：' + r.point.lng + ',' + r.point.lat)
+    } else {
+      console.log('failed' + this.getStatus())
+    }
+    /* eslint-disable */
+  }, { enableHighAccuracy: true })
+</script>
