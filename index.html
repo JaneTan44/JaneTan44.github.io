@@ -40,7 +40,7 @@
             color: white;
         }
     </style>
-<script type="text/javascript" src="https://apis.map.qq.com/tools/geolocation/min?RJUBZ-BERCK-BC2JI-A3GAC-KZRVV-4SBHT&referer=XSMap"></script>
+<script type="text/javascript" src="https://3gimg.qq.com/lightmap/components/geolocation/geolocation.min.js"></script>
 </head>
 <body>
     <div id="pos-area">
@@ -55,7 +55,7 @@
     </div>
  
     <script type="text/JavaScript">
-        var geolocation = new qq.maps.Geolocation();
+        var geolocation = new qq.maps.Geolocation(("RJUBZ-BERCK-BC2JI-A3GAC-KZRVV-4SBHT", "XSMap"));
  
  
         document.getElementById("pos-area").style.height = (document.body.clientHeight - 110) + 'px';
